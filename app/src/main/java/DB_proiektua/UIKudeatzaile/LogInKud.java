@@ -16,7 +16,7 @@ public class LogInKud {
     @FXML
     void onClick(ActionEvent event) {
         //TODO: klik egitean zer egingo du botoiak:)
-        System.out.println("ez mesedez min egiten du");
+        System.out.println("ez mesedez:( min egiten du");
 
     }
 
