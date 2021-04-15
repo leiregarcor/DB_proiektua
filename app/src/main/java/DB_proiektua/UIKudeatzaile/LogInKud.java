@@ -21,16 +21,13 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class LogInKud implements Initializable {
+public class LogInKud {
 
     @FXML
     private TextField txtIzena;
 
     @FXML
     private PasswordField txtPass;
-
-    @FXML
-    private ComboBox<String> cmbxRola;
 
     private Main main;
 
@@ -86,7 +83,7 @@ public class LogInKud implements Initializable {
         }
 
 
-        return true;
+        return bool;
 
     }
 
@@ -114,10 +111,4 @@ public class LogInKud implements Initializable {
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        List<String> aukerak= Arrays.asList("Admin","Abeslari","Erabiltzaile");
-        var listaObservable= FXCollections.observableArrayList(aukerak);
-        cmbxRola.setItems(listaObservable);
-    }
 }

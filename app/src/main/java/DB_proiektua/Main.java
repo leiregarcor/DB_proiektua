@@ -38,21 +38,36 @@ public class Main extends Application {
 
         stage.setTitle("Song Contest");
 
+        //main pantaila
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/Main.fxml"));
         mainUI = (Parent) mainLoader.load();
         logInKud=mainLoader.getController();
         logInKud.setMain(this);
 
+        //admin pantaila
         FXMLLoader adminLoader = new FXMLLoader(getClass().getResource("/AdminScene.fxml"));
         adminUI = (Parent) adminLoader.load();
         adminKud=adminLoader.getController();
         adminKud.setMain(this);
 
+        //abeslari pantaila
+        FXMLLoader abeslariLoader = new FXMLLoader(getClass().getResource("/AbeslariScene.fxml"));
+        abeslariUI = (Parent) adminLoader.load();
+        abeslariKud=adminLoader.getController();
+        abeslariKud.setMain(this);
+
+        //erabiltzaile pantaila
+        FXMLLoader erabiltzaileLoader = new FXMLLoader(getClass().getResource("/ErabiltzaileScene.fxml"));
+        erabiltzaileUI = (Parent) adminLoader.load();
+        erabiltzaileKud=adminLoader.getController();
+        erabiltzaileKud.setMain(this);
+
 
         //kargatu pantailak
         sceneM = new Scene(mainUI);
         sceneAdmin=new Scene(adminUI);
-
+        sceneAbeslari=new Scene(abeslariUI);
+        sceneErabiltzaile=new Scene(erabiltzaileUI);
 
         stage.setScene(sceneM);
         stage.show();
@@ -63,8 +78,10 @@ public class Main extends Application {
     }
 
     public void pantailaratuAbeslari() {
+        stage.setScene(sceneAbeslari);
     }
 
     public void pantailaratuErabiltzaile() {
+        stage.setScene(sceneErabiltzaile);
     }
 }
