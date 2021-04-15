@@ -2,24 +2,35 @@ package DB_proiektua.UIKudeatzaile;
 
 import DBKudeatzailea.DBKudeatzaile;
 import DB_proiektua.Main;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
 
 
-public class LogInKud {
+public class LogInKud implements Initializable {
 
     @FXML
     private TextField txtIzena;
 
     @FXML
     private PasswordField txtPass;
+
+    @FXML
+    private ComboBox<String> cmbxRola;
 
     private Main main;
 
@@ -89,4 +100,10 @@ public class LogInKud {
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        List<String> aukerak= Arrays.asList("Admin","Abeslari","Erabiltzaile");
+        var listaObservable= FXCollections.observableArrayList(aukerak);
+        cmbxRola.setItems(listaObservable);
+    }
 }
