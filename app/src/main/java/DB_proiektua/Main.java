@@ -1,6 +1,8 @@
 package DB_proiektua;
 
+import DB_proiektua.UIKudeatzaile.AbeslariKud;
 import DB_proiektua.UIKudeatzaile.AdminKud;
+import DB_proiektua.UIKudeatzaile.ErabiltzaileKud;
 import DB_proiektua.UIKudeatzaile.LogInKud;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,16 +14,22 @@ public class Main extends Application {
 
     private Parent mainUI;
     private Parent adminUI;
+    private Parent abeslariUI;
+    private Parent erabiltzaileUI;
 
     private Stage stage;
 
     //kontrolatzaileak
     private LogInKud logInKud;
     private AdminKud adminKud;
+    private AbeslariKud abeslariKud;
+    private ErabiltzaileKud erabiltzaileKud;
 
     //scene ak
     private Scene sceneM;
     private Scene sceneAdmin;
+    private Scene sceneErabiltzaile;
+    private Scene sceneAbeslari;
 
 
     @Override
@@ -54,4 +62,9 @@ public class Main extends Application {
         stage.setScene(sceneAdmin);
     }
 
+    public void pantailaratuAbeslari() {
+    }
+
+    public void pantailaratuErabiltzaile() {
+    }
 }

@@ -54,13 +54,14 @@ public class LogInKud implements Initializable {
      * ERABILTZAILE | PASAHITZA
      * admin        | admin             hau admin da(dudak baldin bazenuten)
      * bisbol       | avemaria          honek ez du admin baimenik
+     * rita         | poyo              erabiltzaile arrunta
      */
 
 
     private boolean lortuErabiltzailea() throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
         //TODO: oraindik ere SQLi erasoa izan dezake programak....
 
-
+        boolean bool=false;
         //SELECT ErabiltzaileIzena, ModoBorbon FROM Erabiltzaileak WHERE ErabiltzaileIzena='admin' AND ErabiltzaileGako='21232f297a57a5a743894a0e4a801fc3'
         String query="SELECT ErabiltzaileIzena, ModoBorbon FROM Erabiltzaileak WHERE ErabiltzaileIzena='"+
                 txtIzena.getText()+"' AND ErabiltzaileGako='"+zifratuGakoa(txtPass.getText())+"'";
@@ -68,7 +69,20 @@ public class LogInKud implements Initializable {
         var emaitza=DBKudeatzaile.getInstantzia().execSQL(query);
 
         if(emaitza.next()){
-            main.pantailaratuAdmin();
+            switch (emaitza.getString("ModoBorbon")){
+                case("admin"):
+                    main.pantailaratuAdmin();
+                    bool=true;
+                    break;
+                case("abeslari"):
+                    main.pantailaratuAbeslari();
+                    bool=true;
+                    break;
+                case("erabiltzaile"):
+                    main.pantailaratuErabiltzaile();
+                    bool=true;
+                    break;
+            }
         }
 
 
