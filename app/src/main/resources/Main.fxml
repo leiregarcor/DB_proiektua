@@ -15,7 +15,7 @@
             <Image url="@bagoaz.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="424.0" layoutY="348.0" mnemonicParsing="false" onAction="#onClick" prefHeight="24.0" prefWidth="112.0" text="Login" />
+      <Button layoutX="424.0" layoutY="348.0" mnemonicParsing="false" onAction="#onClick" prefHeight="24.0" prefWidth="112.0" text="Lessgo" />
       <TextField fx:id="txtIzena" layoutX="216.0" layoutY="261.0" />
       <Label layoutX="125.0" layoutY="266.0" text="Izena:" />
       <PasswordField fx:id="txtPass" layoutX="216.0" layoutY="314.0" />

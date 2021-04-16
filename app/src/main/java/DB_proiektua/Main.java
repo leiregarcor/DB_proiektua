@@ -50,6 +50,7 @@ public class Main extends Application {
         adminKud=adminLoader.getController();
         adminKud.setMain(this);
 
+        /*
         //abeslari pantaila
         FXMLLoader abeslariLoader = new FXMLLoader(getClass().getResource("/AbeslariScene.fxml"));
         abeslariUI = (Parent) adminLoader.load();
@@ -63,11 +64,13 @@ public class Main extends Application {
         erabiltzaileKud.setMain(this);
 
 
+         */
+
         //kargatu pantailak
         sceneM = new Scene(mainUI);
         sceneAdmin=new Scene(adminUI);
-        sceneAbeslari=new Scene(abeslariUI);
-        sceneErabiltzaile=new Scene(erabiltzaileUI);
+//        sceneAbeslari=new Scene(abeslariUI);
+//        sceneErabiltzaile=new Scene(erabiltzaileUI);
 
         stage.setScene(sceneM);
         stage.show();
