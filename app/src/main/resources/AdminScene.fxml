@@ -4,13 +4,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="615.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DB_proiektua.UIKudeatzaile.AdminKud">
+<AnchorPane prefHeight="615.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DB_proiektua.UIKudeatzaile.AdminKud">
    <children>
       <Button layoutX="299.0" layoutY="549.0" mnemonicParsing="false" onAction="#onClick" text="Bueltatu" />
       <TableView fx:id="taulaAbeslariak" layoutX="109.0" layoutY="66.0" prefHeight="152.0" prefWidth="410.0">
         <columns>
+            <TableColumn fx:id="colAbeslariID" prefWidth="75.0" text="Abeslari ID" />
           <TableColumn fx:id="tblAbeslari" prefWidth="75.0" text="Abeslari" />
           <TableColumn fx:id="tblGeneroa" prefWidth="75.0" text="Generoa" />
             <TableColumn fx:id="tblAbestia" prefWidth="75.0" text="Abestia" />
@@ -20,5 +23,13 @@
          </columnResizePolicy>
       </TableView>
       <Label layoutX="63.0" layoutY="35.0" text="Abeslari Lista:" />
+      <TextField fx:id="txtAbeslariID" layoutX="109.0" layoutY="263.0" prefHeight="26.0" prefWidth="331.0" />
+      <Label layoutX="109.0" layoutY="234.0" text="Sartu ezabatu nahi duzun abeslariaren ID:" />
+      <Button layoutX="456.0" layoutY="263.0" mnemonicParsing="false" onAction="#onClickEzabatuAbeslaria" text="Lessgo" />
+      <Pane fx:id="paneEzabatu" layoutX="535.0" layoutY="243.0" prefHeight="67.0" prefWidth="154.0" style="-fx-background-color: #fcffa4; -fx-border-color: #ffff00;">
+         <children>
+            <Label fx:id="lblEzabatuMezua" layoutX="6.0" layoutY="9.0" prefHeight="50.0" prefWidth="140.0" text="TORTILLA TIPULAREKIN" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

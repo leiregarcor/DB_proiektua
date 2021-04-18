@@ -4,6 +4,15 @@ public class AdminModel {
     private String izena;
     private String abestia;
     private String generoa;
+    private int abeslariID;
+
+    public int getAbeslariID() {
+        return abeslariID;
+    }
+
+    public void setAbeslariID(int abeslariID) {
+        this.abeslariID = abeslariID;
+    }
 
     public String getIzena() {
         return izena;
