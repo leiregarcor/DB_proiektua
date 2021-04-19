@@ -4,6 +4,7 @@ package DB_proiektua.UIKudeatzaile;
 import DBKudeatzailea.DBKudeatzaile;
 import DB_proiektua.Main;
 import DB_proiektua.model.AdminModel;
+import DB_proiektua.model.ErabiltzaileModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,10 +24,15 @@ import java.util.ResourceBundle;
 
 public class AdminKud implements Initializable {
 
-    ObservableList<AdminModel> emaitza= FXCollections.observableArrayList();
+    ObservableList<AdminModel> abeslariLista = FXCollections.observableArrayList();
+
+    ObservableList<ErabiltzaileModel> erabiltzaileLista = FXCollections.observableArrayList();
+
 
     private Main main;
 
+
+    //ABESLARI
     @FXML
     private TableView<AdminModel> taulaAbeslariak;
 
@@ -51,6 +57,26 @@ public class AdminKud implements Initializable {
     @FXML
     private Pane paneEzabatu;
 
+
+    //ERABILTZAILE
+    @FXML
+    private TableView<ErabiltzaileModel> taulaErabiltzaile;
+
+    @FXML
+    private TableColumn<?, ?> colErabilID;
+
+    @FXML
+    private TableColumn<?, ?> colErabIzena;
+
+    @FXML
+    private TextField txtErabiltzaile;
+
+    @FXML
+    private Pane paneEzabatuErabiltzaile;
+
+    @FXML
+    private Label lblEzabatuErabMezua;
+
     @FXML
     void onClick(ActionEvent event) {
         //TODO: bueltatu
@@ -68,21 +94,29 @@ public class AdminKud implements Initializable {
         DBKudeatzaile.getInstantzia().execSQL(query2);
         DBKudeatzaile.getInstantzia().execSQL(query1);
 
+
         lblEzabatuMezua.setText(txtAbeslariID.getText()+" IDko abeslaria ezabatu da!");
         paneEzabatu.setVisible(true);
 
         AdminModel adminModel=aurkituAbeslaria();
 
-        emaitza.remove(adminModel);
+        abeslariLista.remove(adminModel);
 
         //berriz seteatu taula
-        taulaAbeslariak.setItems(emaitza);
+        taulaAbeslariak.setItems(abeslariLista);
+
+
+    }
+
+    @FXML
+    void onClickEzabatuErabiltzaile(ActionEvent event) {
+        //TODO: ezabatu erabiltzailea
 
 
     }
 
     private AdminModel aurkituAbeslaria() {
-        return emaitza.stream()
+        return abeslariLista.stream()
                 .filter(p->p.getAbeslariID()==Integer.parseInt(txtAbeslariID.getText()))
                 .findFirst()
                 .orElse(null);
@@ -96,17 +130,29 @@ public class AdminKud implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //SELECT a.generoa,a.izena,p.izena FROM Abestia as a inner join ParteHartzaile as p on a.ParteHartzaileID=p.id
-        String query="SELECT a.generoa,a.izena as abestia,p.izena,p.id FROM Abestia as a inner join ParteHartzaile as p on a.ParteHartzaileID=p.id";
+        String abeslariQuery="SELECT a.generoa,a.izena as abestia,p.izena,p.id, p.puntuazioa FROM Abestia as a inner join ParteHartzaile as p on a.ParteHartzaileID=p.id";
 
-        ResultSet resultSet=DBKudeatzaile.getInstantzia().execSQL(query);
+        ResultSet resultSet=DBKudeatzaile.getInstantzia().execSQL(abeslariQuery);
 
         tblAbeslari.setCellValueFactory(new PropertyValueFactory<>("izena"));
         tblAbestia.setCellValueFactory(new PropertyValueFactory<>("abestia"));
         tblGeneroa.setCellValueFactory((new PropertyValueFactory<>("generoa")));
         colAbeslariID.setCellValueFactory(new PropertyValueFactory<>("abeslariID"));
 
+
+        //SELECT ErabiltzaileIzena,Erabiltzaileak.idErabiltzaileak FROM Eurobisio.Erabiltzaileak WHERE ModoBorbon!='admin';
+        String erabiltzaileQuery="SELECT ErabiltzaileIzena, idErabiltzaileak FROM Eurobisio.Erabiltzaileak WHERE ModoBorbon!='admin'";
+
+        ResultSet erabiltzaileRS=DBKudeatzaile.getInstantzia().execSQL(erabiltzaileQuery);
+
+        colErabilID.setCellValueFactory(new PropertyValueFactory<>("izena"));
+        colErabIzena.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+
+
         try {
-            datuakSartu(resultSet);
+            datuakSartuAbeslari(resultSet);
+            datuakSartuErabiltzaile(erabiltzaileRS);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -114,7 +160,19 @@ public class AdminKud implements Initializable {
         paneEzabatu.setVisible(false);
     }
 
-    private void datuakSartu(ResultSet resultSet) throws SQLException {
+    private void datuakSartuErabiltzaile(ResultSet erabiltzaileRS) throws SQLException {
+        while (erabiltzaileRS.next()){
+            ErabiltzaileModel erabiltzaileModel=new ErabiltzaileModel();
+            erabiltzaileModel.setId(erabiltzaileRS.getInt("idErabiltzaileak"));
+            erabiltzaileModel.setIzena(erabiltzaileRS.getString("ErabiltzaileIzena"));
+
+            erabiltzaileLista.add(erabiltzaileModel);
+        }
+
+        taulaErabiltzaile.setItems(erabiltzaileLista);
+    }
+
+    private void datuakSartuAbeslari(ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
             AdminModel adminModel=new AdminModel();
             adminModel.setAbestia(resultSet.getString("abestia"));
@@ -122,9 +180,9 @@ public class AdminKud implements Initializable {
             adminModel.setGeneroa(resultSet.getString("generoa"));
             adminModel.setAbeslariID(resultSet.getInt("id"));
 
-            emaitza.add(adminModel);
+            abeslariLista.add(adminModel);
         }
-        taulaAbeslariak.setItems(emaitza);
+        taulaAbeslariak.setItems(abeslariLista);
 
     }
 }
