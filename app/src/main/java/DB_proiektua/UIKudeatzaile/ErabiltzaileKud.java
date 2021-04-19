@@ -1,6 +1,8 @@
 package DB_proiektua.UIKudeatzaile;
 
 import DB_proiektua.Main;
+import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
 
 public class ErabiltzaileKud {
 
@@ -10,5 +12,16 @@ public class ErabiltzaileKud {
     public void setMain(Main mainApp){
         this.main=mainApp;
     }
+
+        @FXML
+        void bozkatuClick(ActionEvent event) {
+            main.pantailartuBozkatu();
+        }
+
+        @FXML
+        void rankingClick(ActionEvent event) {
+            main.pantailaratuRanking();
+        }
+
 
 }
