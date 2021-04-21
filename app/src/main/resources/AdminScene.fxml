@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="898.0" prefWidth="749.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="DB_proiektua.UIKudeatzaile.AdminKud">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="898.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DB_proiektua.UIKudeatzaile.AdminKud">
    <content>
-      <AnchorPane prefHeight="922.0" prefWidth="725.0">
+      <AnchorPane prefHeight="922.0" prefWidth="1034.0">
          <children>
-            <Button layoutX="309.0" layoutY="882.0" mnemonicParsing="false" onAction="#onClick" text="Bueltatu" />
+            <Button layoutX="309.0" layoutY="882.0" mnemonicParsing="false" onAction="#onClickBueltatu" text="Bueltatu" />
             <TableView fx:id="taulaAbeslariak" layoutX="109.0" layoutY="66.0" prefHeight="152.0" prefWidth="410.0">
                <columns>
                   <TableColumn fx:id="colAbeslariID" prefWidth="75.0" text="Abeslari ID" />
@@ -31,9 +31,9 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="txtAbeslariID" layoutX="109.0" layoutY="263.0" prefHeight="26.0" prefWidth="331.0" />
-            <Label layoutX="109.0" layoutY="234.0" text="Sartu ezabatu nahi duzun abeslariaren ID:" />
-            <Button layoutX="456.0" layoutY="263.0" mnemonicParsing="false" onAction="#onClickEzabatuAbeslaria" text="Lessgo" />
+            <TextField fx:id="txtAbeslariID" layoutX="551.0" layoutY="180.0" prefHeight="26.0" prefWidth="321.0" />
+            <Label layoutX="551.0" layoutY="150.0" text="Sartu ezabatu nahi duzun abeslariaren ID:" />
+            <Button layoutX="886.0" layoutY="180.0" mnemonicParsing="false" onAction="#onClickEzabatuAbeslaria" prefHeight="26.0" prefWidth="74.0" text="Lessgo" />
             <Pane fx:id="paneEzabatu" layoutX="535.0" layoutY="243.0" prefHeight="67.0" prefWidth="154.0" style="-fx-background-color: #fcffa4; -fx-border-color: #ffff00;">
                <children>
                   <Label fx:id="lblEzabatuMezua" layoutX="6.0" layoutY="9.0" prefHeight="50.0" prefWidth="140.0" text="TORTILLA TIPULAREKIN" />
@@ -42,7 +42,7 @@
             <TableView fx:id="taulaErabiltzaile" layoutX="109.0" layoutY="341.0" prefHeight="152.0" prefWidth="410.0">
                <columns>
                   <TableColumn fx:id="colErabilID" prefWidth="118.0" text="Erabiltzaile ID" />
-                  <TableColumn fx:id="colErabIzena" prefWidth="291.0" text="izena" />
+                  <TableColumn fx:id="colErabIzena" prefWidth="290.0" text="izena" />
                </columns>
             </TableView>
             <Label layoutX="109.0" layoutY="511.0" text="Sartu ezabatu nahi duzun abeslariaren ID:" />
@@ -53,12 +53,12 @@
                   <Label fx:id="lblEzabatuErabMezua" layoutX="7.0" layoutY="9.0" prefHeight="50.0" prefWidth="140.0" text="TORTILLA TIPULAREKIN" />
                </children>
             </Pane>
-            <TableView layoutX="109.0" layoutY="638.0" prefHeight="200.0" prefWidth="416.0">
+            <TableView fx:id="taulaPuntuak" layoutX="109.0" layoutY="638.0" prefHeight="200.0" prefWidth="416.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Erabiltzailea" />
-                <TableColumn prefWidth="75.0" text="Noiz" />
-                  <TableColumn prefWidth="75.0" text="Erabiltzailea" />
-                  <TableColumn prefWidth="75.0" text="Puntuak" />
+                <TableColumn fx:id="colErabiltzailePuntu" prefWidth="75.0" text="Erabiltzailea" />
+                <TableColumn fx:id="colNoizPuntu" prefWidth="75.0" text="Noiz" />
+                  <TableColumn fx:id="colAbeslariPuntu" prefWidth="75.0" text="Abeslaria" />
+                  <TableColumn fx:id="colPuntuak" prefWidth="75.0" text="Puntuak" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -70,6 +70,9 @@
                </font>
             </Label>
             <Label layoutX="63.0" layoutY="599.0" text="Erabiltzaileak nori bozkatu eta bere puntuak" />
+            <Label layoutX="550.0" layoutY="75.0" text="Sartu abeslari berria (id,NAN,Izena,adina):" />
+            <TextField layoutX="550.0" layoutY="99.0" prefHeight="26.0" prefWidth="323.0" promptText="Adb: 7, 234567, Pedro Picapiedra, 9" />
+            <Button layoutX="886.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Suge" />
          </children>
       </AnchorPane>
    </content>

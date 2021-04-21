@@ -5,6 +5,7 @@ import DBKudeatzailea.DBKudeatzaile;
 import DB_proiektua.Main;
 import DB_proiektua.model.AdminModel;
 import DB_proiektua.model.ErabiltzaileModel;
+import DB_proiektua.model.PuntuazioAdminModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +28,9 @@ public class AdminKud implements Initializable {
     ObservableList<AdminModel> abeslariLista = FXCollections.observableArrayList();
 
     ObservableList<ErabiltzaileModel> erabiltzaileLista = FXCollections.observableArrayList();
+
+    ObservableList<PuntuazioAdminModel> puntuLista = FXCollections.observableArrayList();
+
 
 
     private Main main;
@@ -58,6 +62,7 @@ public class AdminKud implements Initializable {
     private Pane paneEzabatu;
 
 
+    //----------------------------------------------------------------//
     //ERABILTZAILE
     @FXML
     private TableView<ErabiltzaileModel> taulaErabiltzaile;
@@ -77,21 +82,38 @@ public class AdminKud implements Initializable {
     @FXML
     private Label lblEzabatuErabMezua;
 
+
+    //-----------------------------------------------------------------//
+    //ERABILTZAILE-ABESLARI-PUNTU
     @FXML
-    void onClick(ActionEvent event) {
+    private TableView<PuntuazioAdminModel> taulaPuntuak;
+
+    @FXML
+    private TableColumn<?, ?> colErabiltzailePuntu;
+
+    @FXML
+    private TableColumn<?, ?> colNoizPuntu;
+
+    @FXML
+    private TableColumn<?, ?> colAbeslariPuntu;
+
+    @FXML
+    private TableColumn<?, ?> colPuntuak;
+
+
+    @FXML
+    void onClickBueltatu(ActionEvent event) {
         //TODO: bueltatu
         System.out.println("bueltatu");
     }
 
     @FXML
     void onClickEzabatuAbeslaria(ActionEvent event) {
+        //TODO: agian beste tauletatik ezabatu??
+
         //DELETE FROM ParteHartzaile WHERE id=29;
         String query1="DELETE FROM ParteHartzaile WHERE id="+txtAbeslariID.getText();
 
-        //DELETE FROM Abestia WHERE ParteHartzaileID=122;
-        String query2="DELETE FROM Abestia WHERE ParteHartzaileID="+txtAbeslariID.getText();
-
-        DBKudeatzaile.getInstantzia().execSQL(query2);
         DBKudeatzaile.getInstantzia().execSQL(query1);
 
 
@@ -108,16 +130,36 @@ public class AdminKud implements Initializable {
 
     }
 
-    @FXML
-    void onClickEzabatuErabiltzaile(ActionEvent event) {
-        //TODO: ezabatu erabiltzailea
-
-
-    }
-
     private AdminModel aurkituAbeslaria() {
         return abeslariLista.stream()
                 .filter(p->p.getAbeslariID()==Integer.parseInt(txtAbeslariID.getText()))
+                .findFirst()
+                .orElse(null);
+    }
+
+
+    @FXML
+    void onClickEzabatuErabiltzaile(ActionEvent event) {
+        //DELETE FROM Erabiltzaileak WHERE idErabiltzaileak=2;
+        String query="DELETE FROM Erabiltzaileak WHERE idErabiltzaileak="+txtErabiltzaile.getText();
+
+        DBKudeatzaile.getInstantzia().execSQL(query);
+
+        lblEzabatuErabMezua.setText(txtErabiltzaile.getText()+" IDko abeslaria ezabatu da!");
+        paneEzabatuErabiltzaile.setVisible(true);
+
+        ErabiltzaileModel adminModel=aurkituErabiltzailea();
+
+        erabiltzaileLista.remove(adminModel);
+
+        //berriz seteatu taula
+        taulaErabiltzaile.setItems(erabiltzaileLista);
+
+    }
+
+    private ErabiltzaileModel aurkituErabiltzailea() {
+        return erabiltzaileLista.stream()
+                .filter(p->p.getId()==Integer.parseInt(txtErabiltzaile.getText()))
                 .findFirst()
                 .orElse(null);
     }
@@ -129,8 +171,48 @@ public class AdminKud implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        ResultSet abeslariRS=kargatuAbeslariTaula();
+
+        ResultSet erabiltzaileRS=kargatuErabiltzaileTaula();
+
+        ResultSet puntuRS=kargatuPuntuTaula();
+
+        try {
+            //sartu DBko datuak taulan (abeslari)
+            datuakSartuAbeslari(abeslariRS);
+
+            //sartu DBko datuak taulan (erabiltzaile)
+            datuakSartuErabiltzaile(erabiltzaileRS);
+
+            //sartu DBko datuak taulan (puntuen movida hori)
+            datuakSartuPuntu(puntuRS);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        paneEzabatu.setVisible(false);
+        paneEzabatuErabiltzaile.setVisible(false);
+    }
+
+
+    //KARGATU TAULAK --> RETURN RESULTSET
+
+    private ResultSet kargatuErabiltzaileTaula() {
+        //SELECT ErabiltzaileIzena,Erabiltzaileak.idErabiltzaileak FROM Eurobisio.Erabiltzaileak WHERE ModoBorbon!='admin';
+        String erabiltzaileQuery="SELECT ErabiltzaileIzena, idErabiltzaileak FROM Eurobisio.Erabiltzaileak WHERE ModoBorbon!='admin'";
+
+        ResultSet erabiltzaileRS=DBKudeatzaile.getInstantzia().execSQL(erabiltzaileQuery);
+
+        colErabilID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colErabIzena.setCellValueFactory(new PropertyValueFactory<>("izena"));
+
+        return erabiltzaileRS;
+    }
+
+    private ResultSet kargatuAbeslariTaula() {
         //SELECT a.generoa,a.izena,p.izena FROM Abestia as a inner join ParteHartzaile as p on a.ParteHartzaileID=p.id
-        String abeslariQuery="SELECT a.generoa,a.izena as abestia,p.izena,p.id, p.puntuazioa FROM Abestia as a inner join ParteHartzaile as p on a.ParteHartzaileID=p.id";
+        String abeslariQuery="SELECT a.generoa,a.izena as abestia,p.izena,p.id FROM Abestia as a inner join ParteHartzaile as p on a.ParteHartzaileID=p.id";
 
         ResultSet resultSet=DBKudeatzaile.getInstantzia().execSQL(abeslariQuery);
 
@@ -139,26 +221,26 @@ public class AdminKud implements Initializable {
         tblGeneroa.setCellValueFactory((new PropertyValueFactory<>("generoa")));
         colAbeslariID.setCellValueFactory(new PropertyValueFactory<>("abeslariID"));
 
-
-        //SELECT ErabiltzaileIzena,Erabiltzaileak.idErabiltzaileak FROM Eurobisio.Erabiltzaileak WHERE ModoBorbon!='admin';
-        String erabiltzaileQuery="SELECT ErabiltzaileIzena, idErabiltzaileak FROM Eurobisio.Erabiltzaileak WHERE ModoBorbon!='admin'";
-
-        ResultSet erabiltzaileRS=DBKudeatzaile.getInstantzia().execSQL(erabiltzaileQuery);
-
-        colErabilID.setCellValueFactory(new PropertyValueFactory<>("izena"));
-        colErabIzena.setCellValueFactory(new PropertyValueFactory<>("id"));
-
-
-
-        try {
-            datuakSartuAbeslari(resultSet);
-            datuakSartuErabiltzaile(erabiltzaileRS);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-        paneEzabatu.setVisible(false);
+        return resultSet;
     }
+
+    private ResultSet kargatuPuntuTaula() {
+        //SELECT e.ErabiltzaileIzena,b.dataPH,p.Izena, err.puntuazioa FROM Bozkaketa as b,ParteHartzaile as p,Erabiltzaileak as e, Erregistratu as err WHERE b.idAbeslari=p.id AND e.idErabiltzaileak=b.idErab AND err.ParteHartzaileID=p.id ORDER BY puntuazioa DESC
+        String puntuazioQuery="SELECT e.ErabiltzaileIzena as erabIzen,b.dataPH as data,p.Izena as abeslariIzen, err.puntuazioa FROM Bozkaketa as b,ParteHartzaile as p,Erabiltzaileak as e, Erregistratu as err WHERE b.idAbeslari=p.id AND e.idErabiltzaileak=b.idErab AND err.ParteHartzaileID=p.id ORDER BY puntuazioa DESC";
+
+        ResultSet resultSet=DBKudeatzaile.getInstantzia().execSQL(puntuazioQuery);
+
+        colErabiltzailePuntu.setCellValueFactory(new PropertyValueFactory<>("erabIzen"));
+        colNoizPuntu.setCellValueFactory(new PropertyValueFactory<>("data"));
+        colAbeslariPuntu.setCellValueFactory(new PropertyValueFactory<>("abeslariIzen"));
+        colPuntuak.setCellValueFactory(new PropertyValueFactory<>("puntuazioa"));
+
+        return resultSet;
+
+    }
+
+
+    //GUIko TAULAK KARGATU
 
     private void datuakSartuErabiltzaile(ResultSet erabiltzaileRS) throws SQLException {
         while (erabiltzaileRS.next()){
@@ -183,6 +265,19 @@ public class AdminKud implements Initializable {
             abeslariLista.add(adminModel);
         }
         taulaAbeslariak.setItems(abeslariLista);
-
     }
+
+    private void datuakSartuPuntu(ResultSet puntuRS) throws SQLException {
+        while (puntuRS.next()){
+            PuntuazioAdminModel puntuazioAdminModel=new PuntuazioAdminModel();
+            puntuazioAdminModel.setErabIzen(puntuRS.getString("erabIzen"));
+            puntuazioAdminModel.setData(puntuRS.getString("data"));
+            puntuazioAdminModel.setAbeslariIzen(puntuRS.getString("abeslariIzen"));
+            puntuazioAdminModel.setPuntuazioa(puntuRS.getInt("puntuazioa"));
+
+            puntuLista.add(puntuazioAdminModel);
+        }
+        taulaPuntuak.setItems(puntuLista);
+    }
+
 }
