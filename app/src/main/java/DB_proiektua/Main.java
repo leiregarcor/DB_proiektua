@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class Main extends Application {
 
     private Parent mainUI;
@@ -38,6 +40,19 @@ public class Main extends Application {
 
         stage.setTitle("Song Contest");
 
+        baliabideakKargatu();
+
+        //kargatu pantailak
+        sceneM = new Scene(mainUI);
+        sceneAdmin=new Scene(adminUI);
+//        sceneAbeslari=new Scene(abeslariUI);
+//        sceneErabiltzaile=new Scene(erabiltzaileUI);
+
+        stage.setScene(sceneM);
+        stage.show();
+    }
+
+    private void baliabideakKargatu() throws IOException {
         //main pantaila
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/Main.fxml"));
         mainUI = (Parent) mainLoader.load();
@@ -65,15 +80,6 @@ public class Main extends Application {
 
 
          */
-
-        //kargatu pantailak
-        sceneM = new Scene(mainUI);
-        sceneAdmin=new Scene(adminUI);
-//        sceneAbeslari=new Scene(abeslariUI);
-//        sceneErabiltzaile=new Scene(erabiltzaileUI);
-
-        stage.setScene(sceneM);
-        stage.show();
     }
 
     public void pantailaratuAdmin(){

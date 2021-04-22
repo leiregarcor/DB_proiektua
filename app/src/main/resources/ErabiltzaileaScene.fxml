@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DB_proiektua.UIKudeatzaile.ErabiltzaileKud">
+   <children>
+      <Button fx:id="btnRanking" layoutX="145.0" layoutY="298.0" mnemonicParsing="false" onAction="#OnClick" text="Ranking-a erakutsi" />
+      <Button fx:id="btnBotoa" layoutX="332.0" layoutY="298.0" mnemonicParsing="false" onAction="#OnClick" text="Botoa eman" />
+   </children>
+</AnchorPane>

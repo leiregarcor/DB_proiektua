@@ -1,6 +1,4 @@
-package DB_proiektua.DBKudeatzaile;
-
-import DBKudeatzailea.DBKudeatzaile;
+package DB_proiektua.DBKudeatzailea;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -49,8 +47,7 @@ public class AbeslariDB {
         DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
         String lortuCMSAtributuak = "select izena" +
                 " from ParteHartzaile" +
-                " order by puntuazioa asc" +
-                "LIMIT 2, 1) x";
+                " order by puntuazioa asc";
         ResultSet rs = dbKudeatzaile.execSQL(lortuCMSAtributuak);
         List<String> emaitza = new ArrayList<>();
 

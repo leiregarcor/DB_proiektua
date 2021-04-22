@@ -3,13 +3,14 @@ package DB_proiektua.UIKudeatzaile;
 import DB_proiektua.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import org.checkerframework.checker.initialization.qual.Initialized;
-import DB_proiektua.*;
-import DB_proiektua.DBKudeatzaile.AbeslariDB;
+import DB_proiektua.DBKudeatzailea.AbeslariDB;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
-import java.awt.*;
 
 public class AbeslariKud {
+
+    private int id;
 
     @FXML
     private Label lbIzena;
@@ -30,12 +31,16 @@ public class AbeslariKud {
         this.main=mainApp;
     }
 
+    public void setId(int i){
+        id = i;
+    }
+
     @FXML
     void OnClick(ActionEvent event) {
         Button btn = (Button)event.getSource();
 
         if(btn.equals(btnAbestiak)){
-            AbeslariDB.getInstance().ikusiAbestiak();
+            AbeslariDB.getInstance().ikusiAbestiak(id);
         }
         if(btn.equals(btnRanking)){
             AbeslariDB.getInstance().ikusiRanking();
