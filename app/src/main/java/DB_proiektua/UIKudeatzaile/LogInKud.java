@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ComboBox;
+import utils.Zifraketa;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -61,7 +62,7 @@ public class LogInKud {
         boolean bool=false;
         //SELECT ErabiltzaileIzena, ModoBorbon FROM Erabiltzaileak WHERE ErabiltzaileIzena='admin' AND ErabiltzaileGako='21232f297a57a5a743894a0e4a801fc3'
         String query="SELECT ErabiltzaileIzena, ModoBorbon FROM Erabiltzaileak WHERE ErabiltzaileIzena='"+
-                txtIzena.getText()+"' AND ErabiltzaileGako='"+zifratuGakoa(txtPass.getText())+"'";
+                txtIzena.getText()+"' AND ErabiltzaileGako='"+ Zifraketa.getInstance().zifratuGakoa(txtPass.getText())+"'";
 
         var emaitza=DBKudeatzaile.getInstantzia().execSQL(query);
 
@@ -87,22 +88,6 @@ public class LogInKud {
 
     }
 
-    //Javan String bat zifratzeko
-    private String zifratuGakoa(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        MessageDigest digest = MessageDigest.getInstance("MD5");
-        byte[] hashedBytes = digest.digest(text.getBytes("UTF-8"));
-
-        return convertByteArrayToHexString(hashedBytes);
-    }
-
-    private static String convertByteArrayToHexString(byte[] arrayBytes) {
-        StringBuffer stringBuffer = new StringBuffer();
-        for (int i = 0; i < arrayBytes.length; i++) {
-            stringBuffer.append(Integer.toString((arrayBytes[i] & 0xff) + 0x100, 16)
-                    .substring(1));
-        }
-        return stringBuffer.toString();
-    }
 
 
 

@@ -14,7 +14,7 @@
    <content>
       <AnchorPane prefHeight="922.0" prefWidth="1034.0">
          <children>
-            <Button layoutX="309.0" layoutY="882.0" mnemonicParsing="false" onAction="#onClickBueltatu" text="Bueltatu" />
+            <Button layoutX="484.0" layoutY="876.0" mnemonicParsing="false" onAction="#onClickBueltatu" text="Bueltatu" />
             <TableView fx:id="taulaAbeslariak" layoutX="109.0" layoutY="66.0" prefHeight="152.0" prefWidth="410.0">
                <columns>
                   <TableColumn fx:id="colAbeslariID" prefWidth="75.0" text="Abeslari ID" />
@@ -31,12 +31,12 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="txtAbeslariID" layoutX="551.0" layoutY="180.0" prefHeight="26.0" prefWidth="321.0" />
+            <TextField fx:id="txtAbeslariID" layoutX="551.0" layoutY="180.0" prefHeight="26.0" prefWidth="325.0" />
             <Label layoutX="551.0" layoutY="150.0" text="Sartu ezabatu nahi duzun abeslariaren ID:" />
             <Button layoutX="886.0" layoutY="180.0" mnemonicParsing="false" onAction="#onClickEzabatuAbeslaria" prefHeight="26.0" prefWidth="74.0" text="Lessgo" />
-            <Pane fx:id="paneEzabatu" layoutX="535.0" layoutY="243.0" prefHeight="67.0" prefWidth="154.0" style="-fx-background-color: #fcffa4; -fx-border-color: #ffff00;">
+            <Pane fx:id="paneEzabatu" layoutX="769.0" layoutY="240.0" prefHeight="67.0" prefWidth="228.0" style="-fx-background-color: #fcffa4; -fx-border-color: #ffff00;">
                <children>
-                  <Label fx:id="lblEzabatuMezua" layoutX="6.0" layoutY="9.0" prefHeight="50.0" prefWidth="140.0" text="TORTILLA TIPULAREKIN" />
+                  <Label fx:id="lblEzabatuMezua" layoutX="6.0" layoutY="9.0" prefHeight="50.0" prefWidth="211.0" text="TORTILLA TIPULAREKIN" />
                </children>
             </Pane>
             <TableView fx:id="taulaErabiltzaile" layoutX="109.0" layoutY="341.0" prefHeight="152.0" prefWidth="410.0">
@@ -45,15 +45,15 @@
                   <TableColumn fx:id="colErabIzena" prefWidth="290.0" text="izena" />
                </columns>
             </TableView>
-            <Label layoutX="109.0" layoutY="511.0" text="Sartu ezabatu nahi duzun abeslariaren ID:" />
-            <TextField fx:id="txtErabiltzaile" layoutX="109.0" layoutY="543.0" prefHeight="26.0" prefWidth="331.0" />
-            <Button layoutX="456.0" layoutY="543.0" mnemonicParsing="false" onAction="#onClickEzabatuErabiltzaile" text="Lessgo" />
-            <Pane fx:id="paneEzabatuErabiltzaile" layoutX="535.0" layoutY="523.0" prefHeight="67.0" prefWidth="154.0" style="-fx-background-color: #fcffa4; -fx-border-color: #ffff00;">
+            <Label layoutX="550.0" layoutY="417.0" text="Sartu ezabatu nahi duzun abeslariaren ID:" />
+            <TextField fx:id="txtErabiltzaile" layoutX="551.0" layoutY="441.0" prefHeight="26.0" prefWidth="331.0" />
+            <Button layoutX="892.0" layoutY="441.0" mnemonicParsing="false" onAction="#onClickEzabatuErabiltzaile" text="Lessgo" />
+            <Pane fx:id="paneEzabatuErabiltzaile" layoutX="769.0" layoutY="493.0" prefHeight="67.0" prefWidth="234.0" style="-fx-background-color: #fcffa4; -fx-border-color: #ffff00;">
                <children>
-                  <Label fx:id="lblEzabatuErabMezua" layoutX="7.0" layoutY="9.0" prefHeight="50.0" prefWidth="140.0" text="TORTILLA TIPULAREKIN" />
+                  <Label fx:id="lblEzabatuErabMezua" layoutX="7.0" layoutY="9.0" prefHeight="50.0" prefWidth="219.0" text="TORTILLA TIPULAREKIN" />
                </children>
             </Pane>
-            <TableView fx:id="taulaPuntuak" layoutX="109.0" layoutY="638.0" prefHeight="200.0" prefWidth="416.0">
+            <TableView fx:id="taulaPuntuak" layoutX="109.0" layoutY="638.0" prefHeight="200.0" prefWidth="824.0">
               <columns>
                 <TableColumn fx:id="colErabiltzailePuntu" prefWidth="75.0" text="Erabiltzailea" />
                 <TableColumn fx:id="colNoizPuntu" prefWidth="75.0" text="Noiz" />
@@ -69,10 +69,18 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <Label layoutX="63.0" layoutY="599.0" text="Erabiltzaileak nori bozkatu eta bere puntuak" />
+            <Label layoutX="63.0" layoutY="599.0" text="Erabiltzaileak nori bozkatu, noiz eta bere puntuak" />
             <Label layoutX="550.0" layoutY="75.0" text="Sartu abeslari berria (id,NAN,Izena,adina):" />
-            <TextField layoutX="550.0" layoutY="99.0" prefHeight="26.0" prefWidth="323.0" promptText="Adb: 7, 234567, Pedro Picapiedra, 9" />
-            <Button layoutX="886.0" layoutY="99.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Suge" />
+            <TextField fx:id="txtAbeslariBerria" layoutX="550.0" layoutY="99.0" prefHeight="26.0" prefWidth="325.0" promptText="Adb: 7, 234567, Pedro Picapiedra, 9, Sestao City" />
+            <Button layoutX="886.0" layoutY="99.0" mnemonicParsing="false" onAction="#onClickAbeslariBerria" prefHeight="26.0" prefWidth="74.0" text="Suge" />
+            <Label layoutX="551.0" layoutY="354.0" text="Sartu erabiltziale berria(izena, pasahitza):" />
+            <TextField fx:id="txtErabiltzaileBerria" layoutX="550.0" layoutY="377.0" prefHeight="26.0" prefWidth="325.0" promptText="Adb: Cristiano Ronaldo, SIUU" />
+            <Button layoutX="888.0" layoutY="377.0" mnemonicParsing="false" onAction="#onClickErabiltzaileBerria" prefHeight="26.0" prefWidth="71.0" text="Suge" />
+            <Label layoutX="53.0" layoutY="560.0" text="Puntu Lista:">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </content>
