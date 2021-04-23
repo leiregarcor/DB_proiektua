@@ -7,8 +7,12 @@
  */
 
 plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
+    id 'java'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+
+    id 'org.beryx.jlink' version '2.22.3'
+
 }
 
 repositories {
@@ -28,7 +32,13 @@ dependencies {
 
 }
 
+javafx {
+    version = "12"
+    modules = [ 'javafx.graphics', 'javafx.fxml', 'javafx.controls','javafx.swing']
+}
+
 application {
     // Define the main class for the application.
+    mainModule = 'javafx'
     mainClass = 'DB_proiektua.Main'
 }
