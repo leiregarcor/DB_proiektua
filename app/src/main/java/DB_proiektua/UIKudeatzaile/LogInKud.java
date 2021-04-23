@@ -24,7 +24,7 @@ public class LogInKud {
     private Main main;
 
     @FXML
-    void onClick(ActionEvent event) {
+    void onClick(ActionEvent event) throws SQLException, UnsupportedEncodingException, NoSuchAlgorithmException {
         //TODO: klik egitean erabiltzailea bilatu datu basean
         System.out.println("ez mesedez:( min egiten du");
         try {
@@ -60,16 +60,18 @@ public class LogInKud {
         if(emaitza.next()){
             switch (emaitza.getString("ModoBorbon")){
                 case("admin"):
-                    main.pantailaratuAdmin();
                     bool=true;
+                    main.pantailaratuAdmin();
                     break;
                 case("abeslari"):
+                    bool = true;
+                    main.getAbeslariKud().setIzena(emaitza.getString("ErabiltzaileIzena"));
+                    main.getAbeslariKud().informazioaKargatu();
                     main.pantailaratuAbeslari();
-                    bool=true;
                     break;
                 case("erabiltzaile"):
+                    bool = true;
                     main.pantailaratuErabiltzaile();
-                    bool=true;
                     break;
             }
         }

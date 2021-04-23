@@ -31,7 +31,9 @@ public class ErabiltzaileKud {
             //TODO aqui se vota
         }
         if(btn.equals(btnRanking)){
-            AbeslariDB.getInstance().ikusiRanking();
+            main.getRankingKud().setChivato(true);
+            main.getRankingKud().informazioaKargatu();
+            main.pantailaratuRanking();
         }
     }
 }

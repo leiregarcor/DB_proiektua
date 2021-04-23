@@ -1,5 +1,8 @@
 package DB_proiektua.DBKudeatzailea;
 
+import DB_proiektua.model.AbestiaInfo;
+import DB_proiektua.model.InfoModel;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
@@ -12,21 +15,52 @@ public class AbeslariDB {
         return instantzia;
     }
 
-    public List<String> ikusiAbestiak(int id){
+    public List<InfoModel> informazioaLortu(String i){
         DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
-        String lortuCMSAtributuak = "select abestiak from ParteHartzailea where id="+id;
+        String lortuCMSAtributuak = "select NAN, Izena, adina, herria from ParteHartzaile where Izena='"+i+"'";
         ResultSet rs = dbKudeatzaile.execSQL(lortuCMSAtributuak);
-        List<String> emaitza = new ArrayList<>();
+        List<InfoModel> emaitza = new ArrayList<>();
 
         try{
             while(rs.next()) {
-                String izena = rs.getString("izena");
+                String nan = rs.getString("NAN");
+                String izena = rs.getString("Izena");
+                Integer adina = rs.getInt("adina");
+                String herria = rs.getString("herria");
+                InfoModel berria = new InfoModel(nan,izena,adina,herria);
+                emaitza.add(berria);
             }
         }catch(SQLException throwables) {
             throwables.printStackTrace();
         }
         return emaitza;
     }
+
+    public int lortuId(String izena) throws SQLException {
+        DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
+        String lortuCMSAtributuak = "select id from ParteHartzaile where izena='"+izena+"'";
+        ResultSet rs = dbKudeatzaile.execSQL(lortuCMSAtributuak);
+        Integer id = 0;
+
+        if(rs.next()){
+            id = rs.getInt("id");
+        }
+        return id;
+    }
+
+    public String lortuIzena(int id) throws SQLException {
+        DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
+        String lortuCMSAtributuak = "select Izena from ParteHartzaile where id='"+id+"'";
+        ResultSet rs = dbKudeatzaile.execSQL(lortuCMSAtributuak);
+        String izena = "";
+
+        if(rs.next()){
+            izena = rs.getString("Izena");
+        }
+        return izena;
+    }
+
+
 
     public String ikusiNonOstatu(int id){
         DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
