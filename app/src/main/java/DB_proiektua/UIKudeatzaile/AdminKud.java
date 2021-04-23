@@ -8,7 +8,6 @@ import DB_proiektua.model.ErabiltzaileModel;
 import DB_proiektua.model.PuntuazioAdminModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -118,15 +117,14 @@ public class AdminKud implements Initializable {
 
 
     @FXML
-    void onClickBueltatu(ActionEvent event) {
+    void onClickBueltatu() {
         //TODO: bueltatu
         main.pantailaratuLogIn();
     }
 
 
-
     @FXML
-    void onClickEzabatuAbeslaria(ActionEvent event) {
+    void onClickEzabatuAbeslaria() {
         //TODO: agian beste tauletatik ezabatu??
 
         //DELETE FROM ParteHartzaile WHERE id=29;
@@ -160,7 +158,7 @@ public class AdminKud implements Initializable {
     }
 
     @FXML
-    void onClickAbeslariBerria(ActionEvent event) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    void onClickAbeslariBerria() throws UnsupportedEncodingException, NoSuchAlgorithmException {
         String[] lista=txtAbeslariBerria.getText().split(",\\s+");
 
         // 7, 234567, Pedro Picapiedra, 9, Sestao City, pasahitza
@@ -206,7 +204,7 @@ public class AdminKud implements Initializable {
 
 
     @FXML
-    void onClickEzabatuErabiltzaile(ActionEvent event) {
+    void onClickEzabatuErabiltzaile() {
         //DELETE FROM Erabiltzaileak WHERE idErabiltzaileak=2;
         String query="DELETE FROM Erabiltzaileak WHERE idErabiltzaileak="+txtErabiltzaile.getText();
 
@@ -232,7 +230,7 @@ public class AdminKud implements Initializable {
     }
 
     @FXML
-    void onClickErabiltzaileBerria(ActionEvent event) throws SQLException, UnsupportedEncodingException, NoSuchAlgorithmException {
+    void onClickErabiltzaileBerria() throws SQLException, UnsupportedEncodingException, NoSuchAlgorithmException {
         String[] lista=txtErabiltzaileBerria.getText().split(",\\s+");
 
         lista[1]=Zifraketa.getInstance().zifratuGakoa(lista[1]);

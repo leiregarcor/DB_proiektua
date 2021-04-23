@@ -2,24 +2,14 @@ package DB_proiektua.UIKudeatzaile;
 
 import DBKudeatzailea.DBKudeatzaile;
 import DB_proiektua.Main;
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ComboBox;
 import utils.Zifraketa;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
 
 
 public class LogInKud {
@@ -32,18 +22,19 @@ public class LogInKud {
 
     private Main main;
 
+    public void setMain(Main mainApp){
+        this.main=mainApp;
+    }
+
+
     @FXML
-    void onClick(ActionEvent event) {
+    void onClick() {
         //TODO: klik egitean erabiltzailea bilatu datu basean
         System.out.println("ez mesedez:( min egiten du");
         try {
             boolean bool = lortuErabiltzailea();
-        } catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException | NoSuchAlgorithmException | SQLException e) {
             e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         }
     }
 
@@ -86,17 +77,11 @@ public class LogInKud {
             }
         }
 
-
         return bool;
 
     }
 
 
-
-
-    public void setMain(Main mainApp){
-        this.main=mainApp;
-    }
 
 
 }
