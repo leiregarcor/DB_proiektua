@@ -133,7 +133,11 @@ public class AdminKud implements Initializable {
         //DELETE FROM ParteHartzaile WHERE id=29;
         String query1="DELETE FROM ParteHartzaile WHERE id="+txtAbeslariID.getText();
 
+        //DELETE FROM `Eurobisio`.`Erabiltzaileak` WHERE (`idErabiltzaileak` = '3')
+        String query2="DELETE FROM `Eurobisio`.`Erabiltzaileak` WHERE (`idErabiltzaileak` = '"+txtAbeslariID.getText()+"')";
+
         DBKudeatzaile.getInstantzia().execSQL(query1);
+        DBKudeatzaile.getInstantzia().execSQL(query2);
 
 
         lblEzabatuMezua.setText(txtAbeslariID.getText()+" IDko abeslaria ezabatu da!");
@@ -160,9 +164,9 @@ public class AdminKud implements Initializable {
     void onClickAbeslariBerria(ActionEvent event) {
         String[] lista=txtAbeslariBerria.getText().split(",\\s+");
 
-        // 7, 234567, Pedro Picapiedra, 9, Sestao City
+        // 7, 234567, Pedro Picapiedra, 9, Sestao City, pasahitza
         //INSERT INTO `Eurobisio`.`ParteHartzaile` (`id`, `NAN`, `Izena`, `adina`, `herria`) VALUES ('8', '213', 'Lenin', '1917', 'Sestao City');
-        String query="INSERT INTO `Eurobisio`.`ParteHartzaile` (`id`, `NAN`, `Izena`, `adina`, `herria`) VALUES ('"+
+        String query1="INSERT INTO `Eurobisio`.`ParteHartzaile` (`id`, `NAN`, `Izena`, `adina`, `herria`) VALUES ('"+
                 lista[0]+ //id
                 "', '"+
                 lista[1]+ //NAN
@@ -174,7 +178,16 @@ public class AdminKud implements Initializable {
                 lista[4]+ //herria
                 "')";
 
-        DBKudeatzaile.getInstantzia().execSQL(query);
+
+        //INSERT INTO `Eurobisio`.`Erabiltzaileak` (`ErabiltzaileIzena`, `ErabiltzaileGako`, `ModoBorbon`) VALUES ('wda', 'pito', 'abeslari');
+        String query2="INSERT INTO `Eurobisio`.`Erabiltzaileak` (`ErabiltzaileIzena`, `ErabiltzaileGako`, `ModoBorbon`) VALUES ('"+
+                lista[2]+  //izena
+                "', '"+
+                lista[5]+  //pasahitza
+                "', 'abeslari')";
+
+        DBKudeatzaile.getInstantzia().execSQL(query1);
+        DBKudeatzaile.getInstantzia().execSQL(query2);
 
         lblEzabatuMezua.setText(lista[2]+" Abeslaria sartu da!");
 
