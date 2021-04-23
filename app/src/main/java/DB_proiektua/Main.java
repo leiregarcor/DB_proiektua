@@ -87,4 +87,8 @@ public class Main extends Application {
     public void pantailaratuErabiltzaile() {
         stage.setScene(sceneErabiltzaile);
     }
+
+    public void pantailaratuLogIn() {
+        stage.setScene(sceneM);
+    }
 }

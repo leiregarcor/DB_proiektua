@@ -66,6 +66,9 @@ public class LogInKud {
 
         var emaitza=DBKudeatzaile.getInstantzia().execSQL(query);
 
+        txtPass.setText("");
+        txtIzena.setText("");
+
         if(emaitza.next()){
             switch (emaitza.getString("ModoBorbon")){
                 case("admin"):

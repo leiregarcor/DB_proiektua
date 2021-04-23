@@ -14,7 +14,7 @@
    <content>
       <AnchorPane prefHeight="1000.0" prefWidth="1034.0">
          <children>
-            <Button layoutX="484.0" layoutY="926.0" mnemonicParsing="false" onAction="#onClickBueltatu" text="Bueltatu" />
+            <Button layoutX="484.0" layoutY="950.0" mnemonicParsing="false" onAction="#onClickBueltatu" text="Bueltatu" />
             <TableView fx:id="taulaAbeslariak" layoutX="109.0" layoutY="90.0" prefHeight="189.0" prefWidth="410.0">
                <columns>
                   <TableColumn fx:id="colAbeslariID" prefWidth="75.0" text="Abeslari ID" />

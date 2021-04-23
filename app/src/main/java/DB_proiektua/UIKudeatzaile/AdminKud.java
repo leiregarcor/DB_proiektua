@@ -8,7 +8,6 @@ import DB_proiektua.model.ErabiltzaileModel;
 import DB_proiektua.model.PuntuazioAdminModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -121,7 +120,7 @@ public class AdminKud implements Initializable {
     @FXML
     void onClickBueltatu(ActionEvent event) {
         //TODO: bueltatu
-        System.out.println("bueltatu");
+        main.pantailaratuLogIn();
     }
 
 
@@ -161,7 +160,7 @@ public class AdminKud implements Initializable {
     }
 
     @FXML
-    void onClickAbeslariBerria(ActionEvent event) {
+    void onClickAbeslariBerria(ActionEvent event) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         String[] lista=txtAbeslariBerria.getText().split(",\\s+");
 
         // 7, 234567, Pedro Picapiedra, 9, Sestao City, pasahitza
@@ -178,12 +177,13 @@ public class AdminKud implements Initializable {
                 lista[4]+ //herria
                 "')";
 
+        String pasahitza=Zifraketa.getInstance().zifratuGakoa(lista[5]);
 
         //INSERT INTO `Eurobisio`.`Erabiltzaileak` (`ErabiltzaileIzena`, `ErabiltzaileGako`, `ModoBorbon`) VALUES ('wda', 'pito', 'abeslari');
         String query2="INSERT INTO `Eurobisio`.`Erabiltzaileak` (`ErabiltzaileIzena`, `ErabiltzaileGako`, `ModoBorbon`) VALUES ('"+
                 lista[2]+  //izena
                 "', '"+
-                lista[5]+  //pasahitza
+                pasahitza+  //pasahitza
                 "', 'abeslari')";
 
         DBKudeatzaile.getInstantzia().execSQL(query1);
