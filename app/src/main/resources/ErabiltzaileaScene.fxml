@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DB_proiektua.UIKudeatzaile.ErabiltzaileKud">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DB_proiektua.UIKudeatzaile.ErabiltzaileKud">
    <children>
       <Button fx:id="btnRanking" layoutX="45.0" layoutY="140.0" mnemonicParsing="false" onAction="#OnClick" prefHeight="121.0" prefWidth="224.0" text="Ranking-a erakutsi">
          <font>
