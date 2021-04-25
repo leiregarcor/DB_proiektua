@@ -1,4 +1,4 @@
-package DBKudeatzailea;
+package DB_proiektua.DBKudeatzailea;
 
 
 import utils.Utils;

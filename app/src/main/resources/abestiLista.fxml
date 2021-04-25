@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DB_proiektua.UIKudeatzaile.AbestiListaKud">
+   <children>
+      <TableView fx:id="tvTaula" layoutX="18.0" layoutY="11.0" prefHeight="317.0" prefWidth="571.0">
+        <columns>
+          <TableColumn fx:id="tcGeneroa" prefWidth="75.0" text="Generoa" />
+          <TableColumn fx:id="tcIzena" prefWidth="75.0" text="Izena" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Button fx:id="btnBack" layoutX="273.0" layoutY="349.0" mnemonicParsing="false" onAction="#OnClick" text="Back" />
+   </children>
+</AnchorPane>

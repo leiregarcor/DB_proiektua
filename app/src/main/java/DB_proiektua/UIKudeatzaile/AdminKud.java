@@ -1,7 +1,7 @@
 package DB_proiektua.UIKudeatzaile;
 
 
-import DBKudeatzailea.DBKudeatzaile;
+import DB_proiektua.DBKudeatzailea.DBKudeatzaile;
 import DB_proiektua.Main;
 import DB_proiektua.model.AdminModel;
 import DB_proiektua.model.ErabiltzaileModel;
