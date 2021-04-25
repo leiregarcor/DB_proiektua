@@ -14,5 +14,6 @@
          <font>
             <Font size="20.0" />
          </font></Button>
+      <Button fx:id="btnBack" layoutX="269.0" layoutY="329.0" mnemonicParsing="false" onAction="#OnClick" text="Back" />
    </children>
 </AnchorPane>
