@@ -9,7 +9,7 @@ import java.util.List;
 
 public class AbestiListaDB {
 
-    private static AbestiListaDB instantzia = new AbestiListaDB();
+    private static final AbestiListaDB instantzia = new AbestiListaDB();
 
     public static AbestiListaDB getInstance(){
         return instantzia;
