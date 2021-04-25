@@ -1,15 +1,15 @@
 package DB_proiektua.DBKudeatzailea;
 
-import DB_proiektua.model.AbestiaInfo;
 import DB_proiektua.model.InfoModel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AbeslariDB {
 
-    private static AbeslariDB instantzia = new AbeslariDB();
+    private static final AbeslariDB instantzia = new AbeslariDB();
 
     public static AbeslariDB getInstance(){
         return instantzia;
@@ -40,7 +40,7 @@ public class AbeslariDB {
         DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
         String lortuCMSAtributuak = "select id from ParteHartzaile where izena='"+izena+"'";
         ResultSet rs = dbKudeatzaile.execSQL(lortuCMSAtributuak);
-        Integer id = 0;
+        int id = 0;
 
         if(rs.next()){
             id = rs.getInt("id");
