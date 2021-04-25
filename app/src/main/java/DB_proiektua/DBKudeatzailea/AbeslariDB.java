@@ -62,6 +62,7 @@ public class AbeslariDB {
 
 
 
+    /*
     public String ikusiNonOstatu(int id){
         DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
         String lortuCMSAtributuak = "select fk_ParteHartzaile_Herria from ParteHartzaile where id="+id;
@@ -94,4 +95,7 @@ public class AbeslariDB {
         }
         return emaitza;
     }
+     */
+
+
 }
