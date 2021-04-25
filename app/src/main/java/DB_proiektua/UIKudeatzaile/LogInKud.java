@@ -81,7 +81,7 @@ public class LogInKud {
 
     }
 
-    //Javan String bat zifratzeko
+    //Javan String bat zifratzekoa
     private String zifratuGakoa(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         MessageDigest digest = MessageDigest.getInstance("MD5");
         byte[] hashedBytes = digest.digest(text.getBytes("UTF-8"));
