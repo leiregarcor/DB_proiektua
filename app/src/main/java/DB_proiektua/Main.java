@@ -91,6 +91,15 @@ public class Main extends Application {
         rankingKud.setMain(this);
         sceneRanking = new Scene(rankingUI);
 
+        /*
+        //erabiltzaile pantaila
+        FXMLLoader erabiltzaileLoader = new FXMLLoader(getClass().getResource("/ErabiltzaileScene.fxml"));
+        erabiltzaileUI = (Parent) adminLoader.load();
+        erabiltzaileKud=adminLoader.getController();
+        erabiltzaileKud.setMain(this);
+
+         */
+
     }
 
     public void pantailaratuAdmin(){

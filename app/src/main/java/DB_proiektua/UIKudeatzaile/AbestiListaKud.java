@@ -1,10 +1,8 @@
 package DB_proiektua.UIKudeatzaile;
 
-import DB_proiektua.DBKudeatzailea.AbeslariDB;
-import DB_proiektua.DBKudeatzailea.AbestiListaDB;
+import DB_proiektua.DBKudeatzailea.AbeslariQuery.AbestiListaDB;
 import DB_proiektua.Main;
 import DB_proiektua.model.AbestiaInfo;
-import DB_proiektua.model.InfoModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

@@ -1,9 +1,7 @@
 package DB_proiektua.UIKudeatzaile;
 
-import DB_proiektua.DBKudeatzailea.AbeslariDB;
-import DB_proiektua.DBKudeatzailea.RankingDB;
+import DB_proiektua.DBKudeatzailea.AbeslariQuery.RankingDB;
 import DB_proiektua.Main;
-import DB_proiektua.model.InfoModel;
 import DB_proiektua.model.RankingInfo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

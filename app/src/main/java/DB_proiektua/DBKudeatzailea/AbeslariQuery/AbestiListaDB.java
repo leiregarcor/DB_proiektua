@@ -1,5 +1,6 @@
-package DB_proiektua.DBKudeatzailea;
+package DB_proiektua.DBKudeatzailea.AbeslariQuery;
 
+import DB_proiektua.DBKudeatzailea.DBKudeatzaile;
 import DB_proiektua.model.AbestiaInfo;
 
 import java.sql.ResultSet;

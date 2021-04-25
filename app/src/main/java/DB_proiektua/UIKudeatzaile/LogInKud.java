@@ -1,6 +1,6 @@
 package DB_proiektua.UIKudeatzaile;
 
-import DBKudeatzailea.DBKudeatzaile;
+import DB_proiektua.DBKudeatzailea.DBKudeatzaile;
 import DB_proiektua.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -55,7 +55,7 @@ public class LogInKud {
         String query="SELECT ErabiltzaileIzena, ModoBorbon FROM Erabiltzaileak WHERE ErabiltzaileIzena='"+
                 txtIzena.getText()+"' AND ErabiltzaileGako='"+ Zifraketa.getInstance().zifratuGakoa(txtPass.getText())+"'";
 
-        var emaitza=DBKudeatzaile.getInstantzia().execSQL(query);
+        var emaitza= DBKudeatzaile.getInstantzia().execSQL(query);
 
         txtPass.setText("");
         txtIzena.setText("");
@@ -68,6 +68,8 @@ public class LogInKud {
                     break;
                 case("abeslari"):
                     main.pantailaratuAbeslari();
+                    main.getAbeslariKud().setIzena(emaitza.getString("ErabiltzaileIzena"));
+                    main.getAbeslariKud().informazioaKargatu();
                     bool=true;
                     break;
                 case("erabiltzaile"):

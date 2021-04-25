@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DB_proiektua.UIKudeatzaile.AbestiListaKud">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DB_proiektua.UIKudeatzaile.AbestiListaKud">
    <children>
       <TableView fx:id="tvTaula" layoutX="18.0" layoutY="11.0" prefHeight="317.0" prefWidth="571.0">
         <columns>

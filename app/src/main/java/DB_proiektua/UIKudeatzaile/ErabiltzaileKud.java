@@ -1,6 +1,5 @@
 package DB_proiektua.UIKudeatzaile;
 
-import DB_proiektua.DBKudeatzailea.AbeslariDB;
 import DB_proiektua.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

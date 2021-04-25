@@ -119,7 +119,7 @@ public class AdminKud implements Initializable {
     @FXML
     void onClickBueltatu() {
         //TODO: bueltatu
-        main.pantailaratuLogIn();
+        main.pantailaratuLogin();
     }
 
 
@@ -291,7 +291,7 @@ public class AdminKud implements Initializable {
 
     private ResultSet kargatuErabiltzaileTaula() {
         //SELECT ErabiltzaileIzena,Erabiltzaileak.idErabiltzaileak FROM Eurobisio.Erabiltzaileak WHERE ModoBorbon!='admin';
-        String erabiltzaileQuery="SELECT ErabiltzaileIzena, idErabiltzaileak FROM Eurobisio.Erabiltzaileak WHERE ModoBorbon!='admin'";
+        String erabiltzaileQuery="SELECT ErabiltzaileIzena, idErabiltzaileak FROM Eurobisio.Erabiltzaileak WHERE ModoBorbon='erabiltzaile'";
 
         ResultSet erabiltzaileRS=DBKudeatzaile.getInstantzia().execSQL(erabiltzaileQuery);
 
