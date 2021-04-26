@@ -26,7 +26,7 @@ public class AbestiListaDB {
             while(rs.next()) {
                 String generoa = rs.getString("generoa");
                 String izena = rs.getString("izena");
-                AbestiaInfo berria = new AbestiaInfo(generoa,izena);
+                AbestiaInfo berria = new AbestiaInfo(generoa,izena," ");
                 emaitza.add(berria);
             }
         }catch(SQLException throwables) {

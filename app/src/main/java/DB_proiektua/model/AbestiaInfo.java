@@ -3,11 +3,14 @@ package DB_proiektua.model;
 public class AbestiaInfo {
 
     private String generoa;
-    private String izena;
+    private String abIzena;
+    //bozkatzeko abeslariaren izena gorde behar da
+    private String abeslariIz;
 
-    public AbestiaInfo(String generoa, String izena) {
+    public AbestiaInfo(String generoa, String izena, String abIz) {
         this.generoa = generoa;
-        this.izena = izena;
+        this.abIzena = izena;
+        this.abeslariIz=abIz;
     }
 
     public String getGeneroa() {
@@ -19,10 +22,23 @@ public class AbestiaInfo {
     }
 
     public String getIzena() {
-        return izena;
+        return abIzena;
     }
 
     public void setIzena(String izena) {
-        this.izena = izena;
+        this.abIzena = izena;
+    }
+
+    public String getAbeslariIz() {
+        return abeslariIz;
+    }
+
+    public void setAbeslariIz(String abeslariIz) {
+        this.abeslariIz = abeslariIz;
+    }
+
+    @Override
+    public String toString() {
+        return abIzena +" | "+ abeslariIz ;
     }
 }
