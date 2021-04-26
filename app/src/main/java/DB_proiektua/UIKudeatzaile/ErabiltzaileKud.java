@@ -1,10 +1,8 @@
 package DB_proiektua.UIKudeatzaile;
 
 import DB_proiektua.Main;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-
+import javafx.event.ActionEvent;
 
 public class ErabiltzaileKud {
 
@@ -15,24 +13,15 @@ public class ErabiltzaileKud {
         this.main=mainApp;
     }
 
-
-    @FXML
-    private Button btnRanking;
-
-    @FXML
-    private Button btnBotoa;
-
-    @FXML
-    void OnClick(ActionEvent event) {
-        Button btn = (Button)event.getSource();
-
-        if(btn.equals(btnBotoa)){
-            //TODO aqui se vota
+        @FXML
+        void bozkatuClick(ActionEvent event) {
+            main.pantailartuBozkatu();
         }
-        if(btn.equals(btnRanking)){
-            main.getRankingKud().setChivato(true);
-            main.getRankingKud().informazioaKargatu();
+
+        @FXML
+        void rankingClick(ActionEvent event) {
             main.pantailaratuRanking();
         }
-    }
+
+
 }
