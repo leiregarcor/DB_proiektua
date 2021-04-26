@@ -1,6 +1,6 @@
 package DB_proiektua.UIKudeatzaile;
 
-import DBKudeatzailea.DBKudeatzaile;
+import DB_proiektua.DBKudeatzailea.DBKudeatzaile;
 import DB_proiektua.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,7 +26,7 @@ public class BozkatuKud implements Initializable {
         //select p.Izena, a.izena  from ParteHartzaile p, Abestia a, Erregistratu where a.ParteHartzaileID=p.id and YEAR(ErregistroData)=YEAR(curdate())
         String query="select p.Izena as PHIzena, a.izena as AbestiIzena  from ParteHartzaile p, Abestia a, Erregistratu where a.ParteHartzaileID=p.id and YEAR(ErregistroData)=YEAR(curdate())";
 
-        ResultSet rs=DBKudeatzaile.getInstantzia().execSQL(query);
+        ResultSet rs= DBKudeatzaile.getInstantzia().execSQL(query);
 
     }
 }

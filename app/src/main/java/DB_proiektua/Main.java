@@ -1,14 +1,13 @@
 package DB_proiektua;
 
-import DB_proiektua.UIKudeatzaile.AbeslariKud;
-import DB_proiektua.UIKudeatzaile.AdminKud;
-import DB_proiektua.UIKudeatzaile.ErabiltzaileKud;
-import DB_proiektua.UIKudeatzaile.LogInKud;
+import DB_proiektua.UIKudeatzaile.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Main extends Application {
 
@@ -43,6 +42,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        baliabideakKargatu();
+
         stage = primaryStage;
 
         stage.setTitle("Song Contest");
@@ -69,13 +71,13 @@ public class Main extends Application {
 
         //abeslari pantaila
         FXMLLoader abeslariLoader = new FXMLLoader(getClass().getResource("/AbeslariScene.fxml"));
-        abeslariUI = (Parent) adminLoader.load();
-        abeslariKud=adminLoader.getController();
+        abeslariUI = (Parent) abeslariLoader.load();
+        abeslariKud=abeslariLoader.getController();
         abeslariKud.setMain(this);
         sceneAbeslari = new Scene(abeslariUI);
 
         //erabiltzaile pantaila
-        FXMLLoader erabiltzaileLoader = new FXMLLoader(getClass().getResource("/ErabiltzaileaScene.fxml"));
+        FXMLLoader erabiltzaileLoader = new FXMLLoader(getClass().getResource("/ErabiltzaileScene.fxml"));
         erabiltzaileUI = (Parent) erabiltzaileLoader.load();
         erabiltzaileKud=erabiltzaileLoader.getController();
         erabiltzaileKud.setMain(this);
@@ -95,28 +97,12 @@ public class Main extends Application {
         rankingKud.setMain(this);
         sceneRanking = new Scene(rankingUI);
 
-        //erabiltzaile pantaila
-        FXMLLoader erabiltzaileLoader = new FXMLLoader(getClass().getResource("/ErabiltzaileScene.fxml"));
-        erabiltzaileUI = (Parent) erabiltzaileLoader.load();
-        erabiltzaileKud=erabiltzaileLoader.getController();
-        erabiltzaileKud.setMain(this);
-
-
         //bozkatu pantaila
         FXMLLoader BozkatuLoader = new FXMLLoader(getClass().getResource("/BozkatuScene.fxml"));
         bozkatuUI = (Parent) BozkatuLoader.load();
         bozkatuKud=BozkatuLoader.getController();
         bozkatuKud.setMain(this);
-
-
-        //kargatu pantailak
-        sceneM = new Scene(mainUI);
-        sceneAdmin=new Scene(adminUI);
-        sceneAbeslari=new Scene(abeslariUI);
-        sceneErabiltzaile=new Scene(erabiltzaileUI);
-
-        stage.setScene(sceneM);
-        stage.show();
+        sceneBozkatu=new Scene(bozkatuUI);
     }
 
     public void pantailaratuAdmin(){
@@ -132,10 +118,6 @@ public class Main extends Application {
     }
 
     public void pantailartuBozkatu() { stage.setScene(sceneBozkatu); }
-
-    public void pantailaratuRanking() {
-
-    }
 
     public void pantailaratuAbestiLista(){stage.setScene(sceneAbestiLista);}
 

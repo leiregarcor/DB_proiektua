@@ -118,7 +118,6 @@ public class AdminKud implements Initializable {
 
     @FXML
     void onClickBueltatu() {
-        //TODO: bueltatu
         main.pantailaratuLogin();
     }
 
