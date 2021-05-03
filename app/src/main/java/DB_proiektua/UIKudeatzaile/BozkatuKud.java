@@ -45,7 +45,7 @@ public class BozkatuKud implements Initializable {
             }
             aukeratu.setItems(emaitza);
         }
-        catch (SQLException e){
+        catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -63,6 +63,7 @@ public class BozkatuKud implements Initializable {
             System.out.println(id);
             String query2 = "UPDATE Eurobisio.Erregistratu SET puntuazioa = puntuazioa+1 WHERE (year(ErregistroData) = year(curdate())) and (ParteHartzaileID = '" + rs.getInt("id") + "')";
             DBKudeatzaile.getInstantzia().execSQL(query2);
+            main.getRankingKud().informazioaKargatu();
             main.pantailaratuRanking();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

@@ -20,7 +20,8 @@ public class ErabiltzaileKud {
 
         @FXML
         void rankingClick(ActionEvent event) {
-            main.pantailaratuRanking();
+        main.getRankingKud().informazioaKargatu();
+        main.pantailaratuRanking();
         }
 
 

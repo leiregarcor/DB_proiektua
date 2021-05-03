@@ -18,13 +18,14 @@ public class RankingDB {
 
     public List<RankingInfo> informazioaLortu(){
         DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
-        String lortuCMSAtributuak = "select idAbeslari, count(*) as puntuazioa from Bozkaketa group by idAbeslari having puntuazioa>5 order by puntuazioa asc";
+        String lortuCMSAtributuak = "select id, puntuazioa from Erregistratu, ParteHartzaile where ParteHartzaileID=ParteHartzaile.id having puntuazioa>5 order by puntuazioa desc";
+        //String lortuCMSAtributuak = "select idAbeslari, count(*) as puntuazioa from Bozkaketa group by idAbeslari having puntuazioa>5 order by puntuazioa asc";
         ResultSet rs = dbKudeatzaile.execSQL(lortuCMSAtributuak);
         List<RankingInfo> emaitza = new ArrayList<>();
 
         try{
             while(rs.next()) {
-                int id = rs.getInt("idAbeslari");
+                int id = rs.getInt("id");
                 int puntuazioa = rs.getInt("puntuazioa");
                 RankingInfo berria = new RankingInfo(AbeslariDB.getInstance().lortuIzena(id),puntuazioa);
                 emaitza.add(berria);

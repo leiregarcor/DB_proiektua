@@ -267,7 +267,6 @@ public class AdminKud implements Initializable {
         ResultSet erabiltzaileRS=kargatuErabiltzaileTaula();
 
         ResultSet puntuRS=kargatuPuntuTaula();
-
         try {
             //sartu DBko datuak taulan (abeslari)
             datuakSartuAbeslari(abeslariRS);
