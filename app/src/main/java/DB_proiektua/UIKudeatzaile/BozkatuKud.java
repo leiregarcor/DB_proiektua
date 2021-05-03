@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,5 +48,13 @@ public class BozkatuKud implements Initializable {
         catch (SQLException e){
             e.printStackTrace();
         }
+    }
+    @FXML
+    void bozkatuClick() {
+        AbestiaInfo selectedAI= aukeratu.getSelectionModel().getSelectedItem();
+       // System.out.println("ComboBox Action (selected: " + selectedAI.toString() );
+        //select p.id from ParteHartzaile p, Abestia a where p.Izena like "mesi" and a.izena like  "Gazte Arruntaren koplak" and p.id=a.ParteHartzaileID
+        String query="select p.id from ParteHartzaile p, Abestia a where p.Izena like '"+ selectedAI.getAbeslariIz() +"' and a.izena like '"+ selectedAI.getIzena() +"' and p.id=a.ParteHartzaileID";
+        ResultSet rs= DBKudeatzaile.getInstantzia().execSQL(query);
     }
 }
