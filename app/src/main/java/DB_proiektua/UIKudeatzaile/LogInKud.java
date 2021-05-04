@@ -2,6 +2,7 @@ package DB_proiektua.UIKudeatzaile;
 
 import DB_proiektua.DBKudeatzailea.DBKudeatzaile;
 import DB_proiektua.Main;
+import com.google.common.base.CharMatcher;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -29,7 +30,6 @@ public class LogInKud {
 
     @FXML
     void onClick() {
-        //TODO: klik egitean erabiltzailea bilatu datu basean
         System.out.println("ez mesedez:( min egiten du");
         try {
             boolean bool = lortuErabiltzailea();
@@ -48,12 +48,14 @@ public class LogInKud {
 
 
     private boolean lortuErabiltzailea() throws NoSuchAlgorithmException, UnsupportedEncodingException, SQLException {
-        //TODO: oraindik ere SQLi erasoa izan dezake programak....
 
         boolean bool=false;
+
+        String izena=CharMatcher.anyOf("'#/@").removeFrom(txtIzena.getText());
+
         //SELECT ErabiltzaileIzena, ModoBorbon FROM Erabiltzaileak WHERE ErabiltzaileIzena='admin' AND ErabiltzaileGako='21232f297a57a5a743894a0e4a801fc3'
         String query="SELECT ErabiltzaileIzena, ModoBorbon FROM Erabiltzaileak WHERE ErabiltzaileIzena='"+
-                txtIzena.getText()+"' AND ErabiltzaileGako='"+ Zifraketa.getInstance().zifratuGakoa(txtPass.getText())+"'";
+                izena+"' AND ErabiltzaileGako='"+ Zifraketa.getInstance().zifratuGakoa(txtPass.getText())+"'";
 
         var emaitza= DBKudeatzaile.getInstantzia().execSQL(query);
 

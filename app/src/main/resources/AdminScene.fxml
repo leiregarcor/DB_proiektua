@@ -15,7 +15,7 @@
       <AnchorPane prefHeight="1000.0" prefWidth="1034.0">
          <children>
             <Button layoutX="484.0" layoutY="950.0" mnemonicParsing="false" onAction="#onClickBueltatu" text="Bueltatu" />
-            <TableView fx:id="taulaAbeslariak" layoutX="109.0" layoutY="90.0" prefHeight="189.0" prefWidth="410.0">
+            <TableView fx:id="taulaAbeslariak" layoutX="109.0" layoutY="61.0" prefHeight="189.0" prefWidth="410.0">
                <columns>
                   <TableColumn fx:id="colAbeslariID" prefWidth="75.0" text="Abeslari ID" />
                   <TableColumn fx:id="tblAbeslari" prefWidth="75.0" text="Abeslari" />
@@ -26,17 +26,20 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Label layoutX="63.0" layoutY="59.0" text="Abeslari Lista:">
+            <Label layoutX="63.0" layoutY="33.0" text="Abeslari Lista:">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="txtAbeslariID" layoutX="551.0" layoutY="210.0" prefHeight="26.0" prefWidth="444.0" />
-            <Label layoutX="551.0" layoutY="189.0" text="Sartu ezabatu nahi duzun abeslariaren ID:" />
-            <Button layoutX="883.0" layoutY="241.0" mnemonicParsing="false" onAction="#onClickEzabatuAbeslaria" prefHeight="26.0" prefWidth="74.0" text="Lessgo" />
-            <Pane fx:id="paneEzabatu" layoutX="769.0" layoutY="278.0" prefHeight="67.0" prefWidth="228.0" style="-fx-background-color: #fcffa4; -fx-border-color: #ffff00;">
+            <TextField fx:id="txtAbeslariID" layoutX="551.0" layoutY="161.0" prefHeight="26.0" prefWidth="444.0" />
+            <Label layoutX="551.0" layoutY="138.0" text="Sartu ezabatu nahi duzun abeslariaren ID:" />
+            <Button layoutX="883.0" layoutY="192.0" mnemonicParsing="false" onAction="#onClickEzabatuAbeslaria" prefHeight="26.0" prefWidth="74.0" text="Lessgo" />
+            <Pane fx:id="paneEzabatu" layoutX="553.0" layoutY="226.0" prefHeight="119.0" prefWidth="444.0" style="-fx-background-color: #fcffa4; -fx-border-color: #ffff00;">
                <children>
-                  <Label fx:id="lblEzabatuMezua" layoutX="6.0" layoutY="9.0" prefHeight="50.0" prefWidth="211.0" text="TORTILLA TIPULAREKIN" />
+                  <Label fx:id="lblEzabatuMezua" layoutX="6.0" layoutY="9.0" prefHeight="27.0" prefWidth="423.0" text="TORTILLA TIPULAREKIN" />
+                  <TextField fx:id="txtAbestia" layoutX="188.0" layoutY="36.0" promptText="Adb: Chan Chan, trova" />
+                  <Label layoutX="6.0" layoutY="41.0" text="Sartu abestia eta generoa:" />
+                  <Button layoutX="368.0" layoutY="79.0" mnemonicParsing="false" onAction="#onClickAbestiaSartu" text="Sartu" />
                </children>
             </Pane>
             <TableView fx:id="taulaErabiltzaile" layoutX="109.0" layoutY="411.0" prefHeight="187.0" prefWidth="410.0">
@@ -70,9 +73,9 @@
                </font>
             </Label>
             <Label layoutX="63.0" layoutY="695.0" text="Erabiltzaileak nori bozkatu, noiz eta bere puntuak" />
-            <Label layoutX="550.0" layoutY="92.0" text="Sartu abeslari berria (id,NAN,Izena,adina, Herria eta pasahitza):" />
-            <TextField fx:id="txtAbeslariBerria" layoutX="550.0" layoutY="117.0" prefHeight="26.0" prefWidth="444.0" promptText="Adb: 7, 234567, Pedro Picapiedra, 9, Sestao City, pasahitza" />
-            <Button layoutX="886.0" layoutY="147.0" mnemonicParsing="false" onAction="#onClickAbeslariBerria" prefHeight="26.0" prefWidth="74.0" text="Suge" />
+            <Label layoutX="550.0" layoutY="62.0" text="Sartu abeslari berria (id,NAN,Izena,adina, Herria eta pasahitza):" />
+            <TextField fx:id="txtAbeslariBerria" layoutX="550.0" layoutY="82.0" prefHeight="26.0" prefWidth="444.0" promptText="Adb: 7, 234567, Pedro Picapiedra, 9, Sestao City, pasahitza" />
+            <Button layoutX="886.0" layoutY="113.0" mnemonicParsing="false" onAction="#onClickAbeslariBerria" prefHeight="26.0" prefWidth="74.0" text="Suge" />
             <Label layoutX="551.0" layoutY="411.0" text="Sartu erabiltziale berria(izena, pasahitza):" />
             <TextField fx:id="txtErabiltzaileBerria" layoutX="550.0" layoutY="435.0" prefHeight="26.0" prefWidth="444.0" promptText="Adb: Cristiano Ronaldo, SIUU" />
             <Button layoutX="888.0" layoutY="466.0" mnemonicParsing="false" onAction="#onClickErabiltzaileBerria" prefHeight="26.0" prefWidth="71.0" text="Suge" />

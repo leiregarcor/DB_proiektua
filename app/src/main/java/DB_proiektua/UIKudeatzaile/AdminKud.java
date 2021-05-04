@@ -36,6 +36,9 @@ public class AdminKud implements Initializable {
 
     private Main main;
 
+    private String abeslariID;
+
+
 
     //ABESLARI
     @FXML
@@ -64,6 +67,9 @@ public class AdminKud implements Initializable {
 
     @FXML
     private TextField txtAbeslariBerria;
+
+    @FXML
+    private TextField txtAbestia;
 
 
 
@@ -108,6 +114,7 @@ public class AdminKud implements Initializable {
 
     @FXML
     private TableColumn<?, ?> colPuntuak;
+
 
 
     public void setMain(Main mainApp){
@@ -160,6 +167,8 @@ public class AdminKud implements Initializable {
     void onClickAbeslariBerria() throws UnsupportedEncodingException, NoSuchAlgorithmException {
         String[] lista=txtAbeslariBerria.getText().split(",\\s+");
 
+        abeslariID=lista[0];
+
         // 7, 234567, Pedro Picapiedra, 9, Sestao City, pasahitza
         //INSERT INTO `Eurobisio`.`ParteHartzaile` (`id`, `NAN`, `Izena`, `adina`, `herria`) VALUES ('8', '213', 'Lenin', '1917', 'Sestao City');
         String query1="INSERT INTO `Eurobisio`.`ParteHartzaile` (`id`, `NAN`, `Izena`, `adina`, `herria`) VALUES ('"+
@@ -186,7 +195,7 @@ public class AdminKud implements Initializable {
         DBKudeatzaile.getInstantzia().execSQL(query1);
         DBKudeatzaile.getInstantzia().execSQL(query2);
 
-        lblEzabatuMezua.setText(lista[2]+" Abeslaria sartu da!");
+        lblEzabatuMezua.setText(abeslariID+" Abeslaria sartu da!");
 
         paneEzabatu.setVisible(true);
 
@@ -199,6 +208,31 @@ public class AdminKud implements Initializable {
 
         taulaAbeslariak.setItems(abeslariLista);
 
+    }
+
+    @FXML
+    void onClickAbestiaSartu() {
+        //INSERT INTO `Eurobisio`.`Abestia` (`id`, `generoa`, `izena`, `ParteHartzaileID`) VALUES ('8', 'awd', 'awd', '8');
+
+        String[] lista=txtAbestia.getText().split(",\\s+");
+
+        String query="INSERT INTO `Eurobisio`.`Abestia` (`id`, `generoa`, `izena`, `ParteHartzaileID`) VALUES ('"+
+                abeslariID+"', '"+
+                lista[0]+"', '"+  //generoa
+                lista[1]+"', '"+  //izena
+                abeslariID+"')";
+
+        DBKudeatzaile.getInstantzia().execSQL(query);
+
+        lblEzabatuMezua.setText(abeslariID+" ren abestia sartu da!");
+
+        var admin=abeslariLista.get(abeslariLista.size()-1);
+        admin.setGeneroa(lista[0]);
+        admin.setAbestia(lista[1]);
+
+        abeslariLista.set(abeslariLista.size()-1,admin);
+
+        taulaAbeslariak.refresh();
     }
 
 
