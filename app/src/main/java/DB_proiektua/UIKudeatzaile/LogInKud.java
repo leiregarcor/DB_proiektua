@@ -42,8 +42,14 @@ public class LogInKud {
      * bi erabiltzaile daude:
      * ERABILTZAILE | PASAHITZA
      * admin        | admin             hau admin da(dudak baldin bazenuten)
-     * bisbol       | avemaria          honek ez du admin baimenik
      * rita         | poyo              erabiltzaile arrunta
+     * songExpert13 | bebelin           erabiltzaile arrunta
+     * Perea        | tresly            erabiltzaile arrunta
+     * bakunin      | eliza             erabiltzaile arrunta
+     * pikachu      | pikapika          erabiltzaile arrunta
+     * mesi         | txorizo           abeslaria
+     * CR7          | SIUU              abeslaria
+     * bisbol       | avemaria          abeslaria
      */
 
 

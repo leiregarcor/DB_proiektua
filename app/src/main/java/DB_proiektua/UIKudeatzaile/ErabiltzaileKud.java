@@ -15,13 +15,15 @@ public class ErabiltzaileKud {
 
         @FXML
         void bozkatuClick(ActionEvent event) {
+            main.getRankingKud().setChivato(true);
             main.pantailartuBozkatu();
         }
 
         @FXML
         void rankingClick(ActionEvent event) {
-        main.getRankingKud().informazioaKargatu();
-        main.pantailaratuRanking();
+            main.getRankingKud().setChivato(true);
+            main.getRankingKud().informazioaKargatu();
+            main.pantailaratuRanking();
         }
 
 

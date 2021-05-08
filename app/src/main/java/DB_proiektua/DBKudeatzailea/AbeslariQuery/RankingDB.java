@@ -17,9 +17,10 @@ public class RankingDB {
     }
 
     public List<RankingInfo> informazioaLortu(){
+        //String lortuCMSAtributuak = "select idAbeslari, count(*) as puntuazioa from Bozkaketa group by idAbeslari having puntuazioa>5 order by puntuazioa asc";
+
         DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
         String lortuCMSAtributuak = "select id, puntuazioa from Erregistratu, ParteHartzaile where ParteHartzaileID=ParteHartzaile.id having puntuazioa>5 order by puntuazioa desc";
-        //String lortuCMSAtributuak = "select idAbeslari, count(*) as puntuazioa from Bozkaketa group by idAbeslari having puntuazioa>5 order by puntuazioa asc";
         ResultSet rs = dbKudeatzaile.execSQL(lortuCMSAtributuak);
         List<RankingInfo> emaitza = new ArrayList<>();
 

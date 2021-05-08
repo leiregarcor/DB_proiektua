@@ -30,9 +30,6 @@ public class RankingKud {
     @FXML
     private TableColumn<RankingInfo, Integer> tcPuntuazioa;
 
-    @FXML
-    private Button btnBack;
-
     private Main main;
 
     public void setMain(Main mainApp){
@@ -44,7 +41,7 @@ public class RankingKud {
     }
 
     @FXML
-    void OnClick(ActionEvent event) {
+    void OnClick() {
         if(chivato){
             main.pantailaratuErabiltzaile();
         }
@@ -57,12 +54,7 @@ public class RankingKud {
         List<RankingInfo> kargatzekoa = RankingDB.getInstance().informazioaLortu();
         ObservableList<RankingInfo> Partaideak = FXCollections.observableArrayList(kargatzekoa);
 
-        //add your data to the table here.
         tvTaula.setItems(Partaideak);
-        tvTaula.setEditable(false);
-
-
-        //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
 
         tcIzena.setCellValueFactory(new PropertyValueFactory<>("izena"));
         tcPuntuazioa.setCellValueFactory(new PropertyValueFactory<>("puntuazioa"));

@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -52,21 +51,30 @@ public class BozkatuKud implements Initializable {
     @FXML
     void bozkatuClick() throws SQLException {
         AbestiaInfo selectedAI= aukeratu.getSelectionModel().getSelectedItem();
-        //select p.id from ParteHartzaile p, Abestia a where p.Izena like "mesi" and a.izena like  "Gazte Arruntaren koplak" and p.id=a.ParteHartzaileID
-        String query="select p.id as id from ParteHartzaile p, Abestia a where p.Izena like '"+ selectedAI.getAbeslariIz() +"' and a.izena like '"+ selectedAI.getIzena() +"' and p.id=a.ParteHartzaileID";
-        ResultSet rs= DBKudeatzaile.getInstantzia().execSQL(query); //partehartzailearen id-a lortzen dugu
+        if(selectedAI!=null){
+            //select p.id from ParteHartzaile p, Abestia a where p.Izena like "mesi" and a.izena like  "Gazte Arruntaren koplak" and p.id=a.ParteHartzaileID
+            String query="select p.id as id from ParteHartzaile p, Abestia a where p.Izena like '"+
+                    selectedAI.getAbeslariIz() +
+                    "' and a.izena like '"+
+                    selectedAI.getIzena() +
+                    "' and p.id=a.ParteHartzaileID";
 
-        //UPDATE Eurobisio.Erregistratu SET puntuazioa = puntuazioa+1 WHERE (year(ErregistroData) = year(curdate())) and (ParteHartzaileID = '43')
-        try {
-            rs.next();
-            int id = rs.getInt("id");
-            System.out.println(id);
-            String query2 = "UPDATE Eurobisio.Erregistratu SET puntuazioa = puntuazioa+1 WHERE (year(ErregistroData) = year(curdate())) and (ParteHartzaileID = '" + rs.getInt("id") + "')";
-            DBKudeatzaile.getInstantzia().execSQL(query2);
-            main.getRankingKud().informazioaKargatu();
-            main.pantailaratuRanking();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+
+            ResultSet rs= DBKudeatzaile.getInstantzia().execSQL(query); //partehartzailearen id-a lortzen dugu
+
+            //UPDATE Eurobisio.Erregistratu SET puntuazioa = puntuazioa+1 WHERE (year(ErregistroData) = year(curdate())) and (ParteHartzaileID = '43')
+            try {
+                rs.next();
+                int id = rs.getInt("id");
+
+                String query2 = "UPDATE Eurobisio.Erregistratu SET puntuazioa = puntuazioa+1 WHERE (year(ErregistroData) = year(curdate())) and (ParteHartzaileID = '" + id + "')";
+                DBKudeatzaile.getInstantzia().execSQL(query2);
+                main.getRankingKud().informazioaKargatu();
+                main.pantailaratuRanking();
+            }
+            catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
 
     }
