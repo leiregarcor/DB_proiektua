@@ -185,6 +185,12 @@ public class AdminKud implements Initializable {
 
         String pasahitza=Zifraketa.getInstance().zifratuGakoa(lista[5]);
 
+        //INSERT INTO `Eurobisio`.`Erregistro` VALUES (CURDATE());
+        //INSERT INTO `Eurobisio`.`Erregistratu` VALUES (CURDATE(), '10',NULL,  '0');
+
+        String query3="INSERT INTO `Eurobisio`.`Erregistro` VALUES (CURDATE())";
+        String query4="INSERT INTO `Eurobisio`.`Erregistratu` VALUES (CURDATE(), '"+ lista[0] + "', NULL,  '0')";
+
         //INSERT INTO `Eurobisio`.`Erabiltzaileak` (`ErabiltzaileIzena`, `ErabiltzaileGako`, `ModoBorbon`) VALUES ('wda', 'pito', 'abeslari');
         String query2="INSERT INTO `Eurobisio`.`Erabiltzaileak` (`ErabiltzaileIzena`, `ErabiltzaileGako`, `ModoBorbon`) VALUES ('"+
                 lista[2]+  //izena
@@ -194,6 +200,8 @@ public class AdminKud implements Initializable {
 
         DBKudeatzaile.getInstantzia().execSQL(query1);
         DBKudeatzaile.getInstantzia().execSQL(query2);
+        DBKudeatzaile.getInstantzia().execSQL(query3);
+        DBKudeatzaile.getInstantzia().execSQL(query4);
 
         lblEzabatuMezua.setText(abeslariID+" Abeslaria sartu da!");
 
