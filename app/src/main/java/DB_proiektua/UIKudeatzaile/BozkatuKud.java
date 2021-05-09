@@ -18,9 +18,16 @@ public class BozkatuKud implements Initializable {
 
     private Main main;
 
+    private int erabID;
+
     public void setMain(Main mainApp){
         this.main=mainApp;
     }
+
+    public void setErabID(int erabID) {
+        this.erabID = erabID;
+    }
+
 
     @FXML
     private ComboBox<AbestiaInfo> aukeratu;
@@ -49,7 +56,7 @@ public class BozkatuKud implements Initializable {
         }
     }
     @FXML
-    void bozkatuClick() throws SQLException {
+    void bozkatuClick(){
         AbestiaInfo selectedAI= aukeratu.getSelectionModel().getSelectedItem();
         if(selectedAI!=null){
             //select p.id from ParteHartzaile p, Abestia a where p.Izena like "mesi" and a.izena like  "Gazte Arruntaren koplak" and p.id=a.ParteHartzaileID
@@ -71,6 +78,16 @@ public class BozkatuKud implements Initializable {
                 DBKudeatzaile.getInstantzia().execSQL(query2);
                 main.getRankingKud().informazioaKargatu();
                 main.pantailaratuRanking();
+
+                //INSERT INTO `Eurobisio`.`Bozkaketa` (`idErab`, `idAbeslari`, `dataPH`) VALUES ('15', '13', (SELECT data FROM Erregistro WHERE year(data)=year(curdate()) limit 1));
+
+                String query3="INSERT INTO `Eurobisio`.`Bozkaketa` (`idErab`, `idAbeslari`, `dataPH`) VALUES ('"+
+                        erabID+ //erabiltzaile ID
+                        "', '"+
+                        id+  //abeslari ID
+                        "', (SELECT data FROM Erregistro WHERE year(data)=year(curdate()) limit 1) )"; //urte honetan egingo den probaren data bueltatu
+
+                DBKudeatzaile.getInstantzia().execSQL(query3);
             }
             catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -78,4 +95,5 @@ public class BozkatuKud implements Initializable {
         }
 
     }
+
 }

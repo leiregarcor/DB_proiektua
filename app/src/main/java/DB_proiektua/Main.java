@@ -137,4 +137,6 @@ public class Main extends Application {
     }
 
     public RankingKud getRankingKud(){return rankingKud;}
+
+    public BozkatuKud getBozkatuKud(){return bozkatuKud;}
 }

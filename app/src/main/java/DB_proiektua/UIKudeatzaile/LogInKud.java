@@ -30,9 +30,9 @@ public class LogInKud {
 
     @FXML
     void onClick() {
-        System.out.println("ez mesedez:( min egiten du");
+
         try {
-            boolean bool = lortuErabiltzailea();
+            lortuErabiltzailea();
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException | SQLException e) {
             e.printStackTrace();
         }
@@ -59,8 +59,8 @@ public class LogInKud {
 
         String izena=CharMatcher.anyOf("'#/@").removeFrom(txtIzena.getText());
 
-        //SELECT ErabiltzaileIzena, ModoBorbon FROM Erabiltzaileak WHERE ErabiltzaileIzena='admin' AND ErabiltzaileGako='21232f297a57a5a743894a0e4a801fc3'
-        String query="SELECT ErabiltzaileIzena, ModoBorbon FROM Erabiltzaileak WHERE ErabiltzaileIzena='"+
+        //SELECT ErabiltzaileIzena, ModoBorbon,idErabiltzaileak FROM Erabiltzaileak WHERE ErabiltzaileIzena='admin' AND ErabiltzaileGako='21232f297a57a5a743894a0e4a801fc3'
+        String query="SELECT ErabiltzaileIzena, ModoBorbon,idErabiltzaileak FROM Erabiltzaileak WHERE ErabiltzaileIzena='"+
                 izena+"' AND ErabiltzaileGako='"+ Zifraketa.getInstance().zifratuGakoa(txtPass.getText())+"'";
 
         var emaitza= DBKudeatzaile.getInstantzia().execSQL(query);
@@ -81,6 +81,7 @@ public class LogInKud {
                     bool=true;
                     break;
                 case("erabiltzaile"):
+                    main.getBozkatuKud().setErabID(emaitza.getInt("idErabiltzaileak"));
                     main.pantailaratuErabiltzaile();
                     bool=true;
                     break;
