@@ -74,26 +74,38 @@ public class BozkatuKud implements Initializable {
                 rs.next();
                 int id = rs.getInt("id");
 
-                String query2 = "UPDATE Eurobisio.Erregistratu SET puntuazioa = puntuazioa+1 WHERE (year(ErregistroData) = year(curdate())) and (ParteHartzaileID = '" + id + "')";
-                DBKudeatzaile.getInstantzia().execSQL(query2);
-                main.getRankingKud().informazioaKargatu();
-                main.pantailaratuRanking();
+                if (!bozkatuDu(id)){
+                    String query2 = "UPDATE Eurobisio.Erregistratu SET puntuazioa = puntuazioa+1 WHERE (year(ErregistroData) = year(curdate())) and (ParteHartzaileID = '" + id + "')";
+                    DBKudeatzaile.getInstantzia().execSQL(query2);
+                    main.getRankingKud().informazioaKargatu();
+                    main.pantailaratuRanking();
 
-                //INSERT INTO `Eurobisio`.`Bozkaketa` (`idErab`, `idAbeslari`, `dataPH`) VALUES ('15', '13', (SELECT data FROM Erregistro WHERE year(data)=year(curdate()) limit 1));
+                    //INSERT INTO `Eurobisio`.`Bozkaketa` (`idErab`, `idAbeslari`, `dataPH`) VALUES ('15', '13', (SELECT data FROM Erregistro WHERE year(data)=year(curdate()) limit 1));
 
-                String query3="INSERT INTO `Eurobisio`.`Bozkaketa` (`idErab`, `idAbeslari`, `dataPH`) VALUES ('"+
-                        erabID+ //erabiltzaile ID
-                        "', '"+
-                        id+  //abeslari ID
-                        "', (SELECT data FROM Erregistro WHERE year(data)=year(curdate()) limit 1) )"; //urte honetan egingo den probaren data bueltatu
+                    String query3="INSERT INTO `Eurobisio`.`Bozkaketa` (`idErab`, `idAbeslari`, `dataPH`) VALUES ('"+
+                            erabID+ //erabiltzaile ID
+                            "', '"+
+                            id+  //abeslari ID
+                            "', (SELECT data FROM Erregistro WHERE year(data)=year(curdate()) limit 1) )"; //urte honetan egingo den probaren data bueltatu
 
-                DBKudeatzaile.getInstantzia().execSQL(query3);
+                    DBKudeatzaile.getInstantzia().execSQL(query3);
+
+                }
             }
             catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         }
 
+    }
+
+    private boolean bozkatuDu(int id) throws SQLException {
+        String bozkatuDu="SELECT idErab, idAbeslari, dataPH FROM Bozkaketa WHERE idErab='"+
+                erabID+"' AND idAbeslari='"+
+                id+"' AND YEAR(dataPH)=YEAR(CURDATE())";
+
+        ResultSet rs=DBKudeatzaile.getInstantzia().execSQL(bozkatuDu);
+        return rs.next();
     }
 
 }

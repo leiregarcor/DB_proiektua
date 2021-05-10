@@ -46,3 +46,14 @@ application {
     mainModule = 'javafx'
     mainClass = 'DB_proiektua.Main'
 }
+
+mainClassName = 'DB_proiektua.Main'
+
+jar {
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
