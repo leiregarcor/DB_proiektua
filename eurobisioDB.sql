@@ -39,7 +39,7 @@ CREATE TABLE `Abestia` (
 
 LOCK TABLES `Abestia` WRITE;
 /*!40000 ALTER TABLE `Abestia` DISABLE KEYS */;
-INSERT INTO `Abestia` VALUES (1,'cumbia','Propuesta Indecente',10),(2,'regetonazo','M.I.L.F',13),(4,'DJ','Vapo Vapo X Pocoto',22);
+INSERT INTO `Abestia` VALUES (1,'cumbia','Propuesta Indecente',10),(2,'regetonazo','M.I.L.F',13),(4,'DJ','Vapo Vapo X Pocoto',22),(7,'estado','de alarma',7);
 /*!40000 ALTER TABLE `Abestia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +101,7 @@ CREATE TABLE `Bozkaketa` (
 
 LOCK TABLES `Bozkaketa` WRITE;
 /*!40000 ALTER TABLE `Bozkaketa` DISABLE KEYS */;
-INSERT INTO `Bozkaketa` VALUES (15,10,'2001-09-11');
+INSERT INTO `Bozkaketa` VALUES (15,10,'2001-09-11'),(15,13,'2021-05-07'),(17,13,'2021-05-07');
 /*!40000 ALTER TABLE `Bozkaketa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +118,7 @@ CREATE TABLE `Erabiltzaileak` (
   `ErabiltzaileGako` varchar(45) NOT NULL,
   `ModoBorbon` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idErabiltzaileak`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +127,7 @@ CREATE TABLE `Erabiltzaileak` (
 
 LOCK TABLES `Erabiltzaileak` WRITE;
 /*!40000 ALTER TABLE `Erabiltzaileak` DISABLE KEYS */;
-INSERT INTO `Erabiltzaileak` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','admin'),(2,'bisbol','5464223733454883432b709d3977829a','abeslari'),(3,'rita','0ecee6a0624d5c22a7d004b3878fceaf','erabiltzaile'),(12,'mesi','8a9c28a00bcf7a136178d16a3c55ecbf','abeslari'),(13,'CR7','b9ca466c42fcf4b8bc33e22e2e2b3618','abeslari'),(14,'songExpert13','bec7a744fd168c5d65959ea4b288cb5d','erabiltzaile'),(15,'Perea','dbfaddf043c2822e70abac9a27493015','erabiltzaile'),(16,'bakunin','31e10abc4f418ed16ed9e646f5c0bee7','erabiltzaile'),(17,'pikachu','edb6eb67ad923f497521c09cab18e82c','erabiltzaile');
+INSERT INTO `Erabiltzaileak` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','admin'),(2,'bisbol','5464223733454883432b709d3977829a','abeslari'),(3,'rita','0ecee6a0624d5c22a7d004b3878fceaf','erabiltzaile'),(12,'mesi','8a9c28a00bcf7a136178d16a3c55ecbf','abeslari'),(13,'CR7','b9ca466c42fcf4b8bc33e22e2e2b3618','abeslari'),(14,'songExpert13','bec7a744fd168c5d65959ea4b288cb5d','erabiltzaile'),(15,'Perea','dbfaddf043c2822e70abac9a27493015','erabiltzaile'),(16,'bakunin','31e10abc4f418ed16ed9e646f5c0bee7','erabiltzaile'),(17,'pikachu','edb6eb67ad923f497521c09cab18e82c','erabiltzaile'),(19,'perro','c62ddff8ddf763dcb2445827a4c5f1b5','abeslari');
 /*!40000 ALTER TABLE `Erabiltzaileak` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,7 +156,7 @@ CREATE TABLE `Erregistratu` (
 
 LOCK TABLES `Erregistratu` WRITE;
 /*!40000 ALTER TABLE `Erregistratu` DISABLE KEYS */;
-INSERT INTO `Erregistratu` VALUES ('2021-05-07',10,'10:20:00',2),('2021-05-07',13,'10:30:00',6),('2021-05-07',22,'11:00:00',1);
+INSERT INTO `Erregistratu` VALUES ('2021-05-07',7,'10:19:06',0),('2021-05-07',10,'10:20:00',2),('2021-05-07',13,'10:30:00',8),('2021-05-07',22,'11:00:00',1);
 /*!40000 ALTER TABLE `Erregistratu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +179,7 @@ CREATE TABLE `Erregistro` (
 
 LOCK TABLES `Erregistro` WRITE;
 /*!40000 ALTER TABLE `Erregistro` DISABLE KEYS */;
-INSERT INTO `Erregistro` VALUES ('2001-09-11'),('2021-04-16'),('2021-05-07'),('2021-09-08');
+INSERT INTO `Erregistro` VALUES ('2001-09-11'),('2021-05-07');
 /*!40000 ALTER TABLE `Erregistro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,7 +281,7 @@ CREATE TABLE `ParteHartzaile` (
 
 LOCK TABLES `ParteHartzaile` WRITE;
 /*!40000 ALTER TABLE `ParteHartzaile` DISABLE KEYS */;
-INSERT INTO `ParteHartzaile` VALUES (10,'666','mesi',40,'Erandio'),(13,'1234','bisbol',29,'Sestao'),(22,'552','CR7',28,'Lemoa');
+INSERT INTO `ParteHartzaile` VALUES (7,'122','perro',33,'Erandio'),(10,'666','mesi',40,'Erandio'),(13,'1234','bisbol',29,'Sestao'),(22,'552','CR7',28,'Lemoa');
 /*!40000 ALTER TABLE `ParteHartzaile` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -294,4 +294,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-08 18:08:01
+-- Dump completed on 2021-05-10 10:20:46

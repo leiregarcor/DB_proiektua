@@ -50,6 +50,7 @@ public class LogInKud {
      * mesi         | txorizo           abeslaria
      * CR7          | SIUU              abeslaria
      * bisbol       | avemaria          abeslaria
+     * perro        | sanche
      */
 
 

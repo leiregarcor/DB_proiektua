@@ -131,7 +131,6 @@ public class AdminKud implements Initializable {
 
     @FXML
     void onClickEzabatuAbeslaria() {
-        //TODO: agian beste tauletatik ezabatu??
 
         //DELETE FROM ParteHartzaile WHERE id=29;
         String query1="DELETE FROM ParteHartzaile WHERE id="+txtAbeslariID.getText();
@@ -188,8 +187,10 @@ public class AdminKud implements Initializable {
         //INSERT INTO `Eurobisio`.`Erregistro` VALUES (CURDATE());
         //INSERT INTO `Eurobisio`.`Erregistratu` VALUES (CURDATE(), '10',NULL,  '0');
 
-        String query3="INSERT INTO `Eurobisio`.`Erregistro` VALUES (CURDATE())";
-        String query4="INSERT INTO `Eurobisio`.`Erregistratu` VALUES (CURDATE(), '"+ lista[0] + "', NULL,  '0')";
+        String query4="INSERT INTO `Eurobisio`.`Erregistratu` VALUES ( "+
+                "(SELECT data FROM Erregistro WHERE year(data)=year(curdate()) limit 1)" +
+                " , '"+ lista[0] +
+                "', current_time(),  '0')";
 
         //INSERT INTO `Eurobisio`.`Erabiltzaileak` (`ErabiltzaileIzena`, `ErabiltzaileGako`, `ModoBorbon`) VALUES ('wda', 'pito', 'abeslari');
         String query2="INSERT INTO `Eurobisio`.`Erabiltzaileak` (`ErabiltzaileIzena`, `ErabiltzaileGako`, `ModoBorbon`) VALUES ('"+
@@ -200,7 +201,6 @@ public class AdminKud implements Initializable {
 
         DBKudeatzaile.getInstantzia().execSQL(query1);
         DBKudeatzaile.getInstantzia().execSQL(query2);
-        DBKudeatzaile.getInstantzia().execSQL(query3);
         DBKudeatzaile.getInstantzia().execSQL(query4);
 
         lblEzabatuMezua.setText(abeslariID+" Abeslaria sartu da!");
