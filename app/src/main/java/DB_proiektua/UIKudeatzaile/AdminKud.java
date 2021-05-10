@@ -226,8 +226,8 @@ public class AdminKud implements Initializable {
 
         String query="INSERT INTO `Eurobisio`.`Abestia` (`id`, `generoa`, `izena`, `ParteHartzaileID`) VALUES ('"+
                 abeslariID+"', '"+
-                lista[0]+"', '"+  //generoa
-                lista[1]+"', '"+  //izena
+                lista[1]+"', '"+  //generoa
+                lista[0]+"', '"+  //izena
                 abeslariID+"')";
 
         DBKudeatzaile.getInstantzia().execSQL(query);
@@ -235,8 +235,8 @@ public class AdminKud implements Initializable {
         lblEzabatuMezua.setText(abeslariID+" ren abestia sartu da!");
 
         var admin=abeslariLista.get(abeslariLista.size()-1);
-        admin.setGeneroa(lista[0]);
-        admin.setAbestia(lista[1]);
+        admin.setGeneroa(lista[1]);
+        admin.setAbestia(lista[0]);
 
         abeslariLista.set(abeslariLista.size()-1,admin);
 

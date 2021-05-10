@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="898.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DB_proiektua.UIKudeatzaile.AdminKud">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="898.0" prefWidth="1056.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DB_proiektua.UIKudeatzaile.AdminKud">
    <content>
       <AnchorPane prefHeight="1000.0" prefWidth="1034.0">
          <children>
@@ -76,7 +76,7 @@
             <Label layoutX="550.0" layoutY="62.0" text="Sartu abeslari berria (id,NAN,Izena,adina, Herria eta pasahitza):" />
             <TextField fx:id="txtAbeslariBerria" layoutX="550.0" layoutY="82.0" prefHeight="26.0" prefWidth="444.0" promptText="Adb: 7, 234567, Pedro Picapiedra, 9, Sestao City, pasahitza" />
             <Button layoutX="886.0" layoutY="113.0" mnemonicParsing="false" onAction="#onClickAbeslariBerria" prefHeight="26.0" prefWidth="74.0" text="Suge" />
-            <Label layoutX="551.0" layoutY="411.0" text="Sartu erabiltziale berria(izena, pasahitza):" />
+            <Label layoutX="551.0" layoutY="411.0" text="Sartu erabiltzaile berria(izena, pasahitza):" />
             <TextField fx:id="txtErabiltzaileBerria" layoutX="550.0" layoutY="435.0" prefHeight="26.0" prefWidth="444.0" promptText="Adb: Cristiano Ronaldo, SIUU" />
             <Button layoutX="888.0" layoutY="466.0" mnemonicParsing="false" onAction="#onClickErabiltzaileBerria" prefHeight="26.0" prefWidth="71.0" text="Suge" />
             <Label layoutX="53.0" layoutY="662.0" text="Puntu Lista:">
